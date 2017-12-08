@@ -53,11 +53,11 @@ public class LoginDaoImpl implements Login,DBTables{
         }
         catch (SQLException ex)
         {
-            ex.printStackTrace();
+            ex.printStackTrace();//Then it will be exchange for a logger
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            e.printStackTrace();//Then it will be exchange for a logger
         }
         finally
         {
@@ -69,7 +69,7 @@ public class LoginDaoImpl implements Login,DBTables{
             }
             catch (SQLException ex)
             {
-                ex.printStackTrace();
+                ex.printStackTrace();//Then it will be exchange for a logger
             }
         }
         return loginSuccessful;

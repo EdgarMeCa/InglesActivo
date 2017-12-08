@@ -40,7 +40,7 @@ public class DBConnection implements DatabaseCredential {
         }
         catch (SQLException ex)
         {
-            ex.printStackTrace();
+            ex.printStackTrace();//Then it will be exchange for a logger
         }
         return conn;
     }
@@ -57,7 +57,7 @@ public class DBConnection implements DatabaseCredential {
             } 
             catch (SQLException ex) 
             {
-                ex.printStackTrace();
+                ex.printStackTrace();//Then it will be exchange for a logger
             }
                 
         }
