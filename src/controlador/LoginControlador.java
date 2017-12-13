@@ -39,6 +39,10 @@ public class LoginControlador implements FieldValidate{
         return result;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean validateRequiredFilds() {
         boolean result = true;
@@ -48,7 +52,4 @@ public class LoginControlador implements FieldValidate{
         }
         return result;
     }
-    
-    
-    
 }
