@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.dao;
+package modelo.dao.impl;
 
 import database.DBConnection;
 import modelo.dao.LoginDao;

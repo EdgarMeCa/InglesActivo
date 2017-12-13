@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.dao.LoginDaoImpl;
+import modelo.dao.impl.LoginDaoImpl;
 import modelo.dao.LoginDao;
 import javax.swing.JOptionPane;
 
@@ -20,6 +20,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -116,6 +117,10 @@ public class Login extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null,"Fracaso");
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Campos vacios");
         }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
