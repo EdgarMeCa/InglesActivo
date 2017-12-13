@@ -24,20 +24,6 @@ public class LoginControlador implements FieldValidate{
         this.username = username;
         this.password = password;
     }
-    
-    /**
-     *
-     * @return 
-     */
-    @Override
-    public boolean validateNotEmptyFields() {
-        boolean result = true;
-        if (username.getText().isEmpty() || password.getText().isEmpty())
-        {
-            result = false;
-        }
-        return result;
-    }
 
     /**
      *
@@ -51,5 +37,10 @@ public class LoginControlador implements FieldValidate{
             result = false;
         }
         return result;
+    }
+
+    @Override
+    public boolean validateNotEmptyFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
