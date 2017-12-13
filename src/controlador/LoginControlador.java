@@ -41,7 +41,12 @@ public class LoginControlador implements FieldValidate{
 
     @Override
     public boolean validateRequiredFilds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean result = true;
+        if (username.getText().isEmpty() || password.getText().isEmpty())
+        {
+            result = false;
+        }
+        return result;
     }
     
     
