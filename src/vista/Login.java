@@ -8,6 +8,7 @@ package vista;
 import modelo.dao.impl.LoginDaoImpl;
 import modelo.dao.LoginDao;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -158,7 +159,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogin;
     private javax.swing.JLabel jLabel1;
@@ -167,4 +168,20 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextPassword;
     private javax.swing.JTextField jTextUsername;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getjTextPassword() {
+        return jTextPassword;
+    }
+
+    public JTextField getjTextUsername() {
+        return jTextUsername;
+    }
+
+    public void setjTextPassword(JTextField jTextPassword) {
+        this.jTextPassword = jTextPassword;
+    }
+
+    public void setjTextUsername(JTextField jTextUsername) {
+        this.jTextUsername = jTextUsername;
+    }
 }

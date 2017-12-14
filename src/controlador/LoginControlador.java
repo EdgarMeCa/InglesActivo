@@ -6,23 +6,20 @@
 package controlador;
 
 import controlador.interfaces.FieldValidate;
-import javax.swing.JTextField;
+import vista.Login;
 /**
  *
  * @author emedina
  */
 public class LoginControlador implements FieldValidate{
+    private Login login = null;
     
-    private JTextField username = null;
-    private JTextField password = null;
-
     public LoginControlador() {
-        
+       
     }
 
-    public LoginControlador(JTextField username, JTextField password) {
-        this.username = username;
-        this.password = password;
+    public LoginControlador(Login login) {
+        this.login = login;
     }
 
     /**
@@ -32,7 +29,7 @@ public class LoginControlador implements FieldValidate{
     @Override
     public boolean validateRequiredFilds() {
         boolean result = true;
-        if (username.getText().isEmpty() || password.getText().isEmpty())
+        if (login.getjTextUsername().getText().isEmpty())
         {
             result = false;
         }
