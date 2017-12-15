@@ -5,11 +5,9 @@
  */
 package vista;
 
-import modelo.dao.impl.LoginDaoImpl;
-import modelo.dao.LoginDao;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import controlador.LoginControlador;
 
 /**
  *
@@ -113,22 +111,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextUsernameActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        if (!jTextUsername.getText().isEmpty() || !jTextPassword.getText().isEmpty()){
-            LoginDao loginDao = new LoginDao(jTextUsername.getText(),jTextPassword.getText());
-            LoginDaoImpl loginDaoImpl = new LoginDaoImpl();
-            if(loginDaoImpl.loginUser(loginDao))
-            {
-                JOptionPane.showMessageDialog(null,"Exito");
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Fracaso");
-            }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Campos vacios");
-        }
+       LoginControlador lc = new LoginControlador(this);
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     /**

@@ -12,7 +12,7 @@ import javax.swing.text.JTextComponent;
  */
 public interface FieldValuable {
     
-    public abstract void validateRequiredFilds();
+    public abstract boolean validateRequiredFilds();
     public abstract boolean validateNotEmptyField(JTextComponent component);
     public abstract void showMessage(String message);
 }

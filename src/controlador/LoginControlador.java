@@ -9,11 +9,14 @@ import controlador.interfaces.FieldValuable;
 import javax.swing.text.JTextComponent;
 import javax.swing.JOptionPane;
 import vista.Login;
+import controlador.interfaces.Executable;
+import modelo.dao.LoginDao;
+import modelo.dao.impl.LoginDaoImpl;
 /**
  *
  * @author emedina
  */
-public class LoginControlador implements FieldValuable{
+public class LoginControlador implements FieldValuable,Executable{
     private Login login = null;
     
     public LoginControlador() {
@@ -26,19 +29,24 @@ public class LoginControlador implements FieldValuable{
 
     /**
      *
+     * @return 
      */
     @Override
-    public void validateRequiredFilds() {
+    public boolean validateRequiredFilds() {
         String message = null;
+        boolean result = true;
         if (validateNotEmptyField(login.getjTextUsername()))
         {
             message = "El campo usuario no puede estar vacio. \n";
+            result = false;
         }
         if (validateNotEmptyField(login.getjTextPassword()))
         {
             message = "El campo contraseña no puede estar vacio. \n";
+            result = false;
         }
         showMessage(message);
+        return result;
     }
 
     /**
@@ -60,6 +68,22 @@ public class LoginControlador implements FieldValuable{
         if(message != null)
         {
            JOptionPane.showMessageDialog(login, message, "Warning message", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    @Override
+    public void doAction() {
+        if(validateRequiredFilds())
+        {
+            LoginDao loginDao = new LoginDao(login.getjTextUsername().getText(),login.getjTextPassword().getText());
+            LoginDaoImpl loginDaoImpl = new LoginDaoImpl();
+            
+            boolean loginSuccessful = loginDaoImpl.loginUser(loginDao);
+            
+            if (loginSuccessful)
+            {
+                
+            }
         }
     }
 }
