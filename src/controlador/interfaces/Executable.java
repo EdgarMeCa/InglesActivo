@@ -9,8 +9,8 @@ package controlador.interfaces;
  *
  * @author emedina
  */
-public interface FieldValidate {
+public interface Executable {
     
-    public abstract boolean validateNotEmptyFields();
-    public abstract boolean validateRequiredFilds();
+    public abstract void doAction();
+    
 }
