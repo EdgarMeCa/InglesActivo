@@ -33,16 +33,16 @@ public class LoginControlador implements FieldValuable,Executable{
      */
     @Override
     public boolean validateRequiredFilds() {
-        String message = null;
+        String message = "";
         boolean result = true;
-        if (validateNotEmptyField(login.getjTextUsername()))
+        if (!validateNotEmptyField(login.getjTextUsername()))
         {
-            message = "El campo usuario no puede estar vacio. \n";
+            message += "El campo usuario no puede estar vacio. \n";
             result = false;
         }
-        if (validateNotEmptyField(login.getjTextPassword()))
+        if (!validateNotEmptyField(login.getjTextPassword()))
         {
-            message = "El campo contraseña no puede estar vacio. \n";
+            message += "El campo contraseña no puede estar vacio. \n";
             result = false;
         }
         showMessage(message);
@@ -65,9 +65,9 @@ public class LoginControlador implements FieldValuable,Executable{
      */
     @Override
     public void showMessage(String message){
-        if(message != null)
+        if(!message.isEmpty())
         {
-           JOptionPane.showMessageDialog(login, message, "Warning message", JOptionPane.WARNING_MESSAGE);
+           JOptionPane.showMessageDialog(login, message, "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
