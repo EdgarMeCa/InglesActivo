@@ -206,13 +206,13 @@ public class TeacherABC extends javax.swing.JFrame {
     private javax.swing.JTextField jTextPhone;
     // End of variables declaration//GEN-END:variables
 
-private void initValues(){
-    jTextName.setText(teacherDao.getName());
-    jTextLastName1.setText(teacherDao.getFirstLastName());
-    jTextLastName2.setText(teacherDao.getSecondLastName());
-    jTextAddress.setText(null);
-    jTextPhone.setText(teacherDao.getPhone());
-    jTextMail.setText(teacherDao.getEmail());
-    jTextPassword.setText(teacherDao.getPassword());
-}
+    private void initValues(){
+        jTextName.setText(teacherDao.getName());
+        jTextLastName1.setText(teacherDao.getFirstLastName());
+        jTextLastName2.setText(teacherDao.getSecondLastName());
+        jTextAddress.setText(null);
+        jTextPhone.setText(teacherDao.getPhone());
+        jTextMail.setText(teacherDao.getEmail());
+        jTextPassword.setText(teacherDao.getPassword());
+    }
 }
