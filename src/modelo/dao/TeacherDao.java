@@ -16,6 +16,7 @@ public class TeacherDao {
     private String firstLastName;
     private String secondLastName;
     private String phone;
+    private String address;
     private String email;
     private String password;
 
@@ -23,12 +24,13 @@ public class TeacherDao {
         
     }
     
-    public TeacherDao(int idTeacher, String name, String firstLastName, String secondLastName, String phone, String email, String password) {
+    public TeacherDao(int idTeacher, String name, String firstLastName, String secondLastName, String phone, String address,String email, String password) {
         this.idTeacher = idTeacher;
         this.name = name;
         this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
         this.phone = phone;
+        this.address = address;
         this.email = email;
         this.password = password;
     }

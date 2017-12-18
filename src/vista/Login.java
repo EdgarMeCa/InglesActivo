@@ -82,7 +82,7 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(18, 18, Short.MAX_VALUE)
                                 .addComponent(jButtonLogin))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
+                                .addGap(10, 10, 10)
                                 .addComponent(jTextPassword)))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
