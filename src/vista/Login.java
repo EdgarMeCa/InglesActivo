@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        jTextUsername.setFocusable(true);
     }
 
     /**
@@ -52,18 +53,16 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabelUsername.setText("Username");
+        jLabelUsername.setText("Usuario");
 
-        jLabelPassword.setText("Password");
+        jLabelPassword.setText("Contraseña");
 
-        jButtonLogin.setText("Log in");
+        jButtonLogin.setText("Ingresar");
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
             }
         });
-
-        jTextPassword.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

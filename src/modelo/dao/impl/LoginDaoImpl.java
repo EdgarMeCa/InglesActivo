@@ -77,6 +77,5 @@ public class LoginDaoImpl implements Login,DBTables{
     
     private boolean validateLogin(int numberResult){
         return numberResult == 1;
-    }
-    
+    }  
 }
