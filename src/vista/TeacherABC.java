@@ -20,6 +20,7 @@ public class TeacherABC extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         teacherDao = new TeacherDao();
+        initValues();
     }
     
     /**
@@ -30,6 +31,7 @@ public class TeacherABC extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.teacherDao = teacherDao;
+        initValues();
     }
 
     /**
@@ -49,9 +51,9 @@ public class TeacherABC extends javax.swing.JFrame {
         jTextLastName2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextAddress = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextPhone = new javax.swing.JTextField();
+        jTextMail = new javax.swing.JTextField();
+        jTextPassword = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -106,9 +108,9 @@ public class TeacherABC extends javax.swing.JFrame {
                             .addComponent(jTextName, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextLastName1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextAddress)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))
+                            .addComponent(jTextPhone)
+                            .addComponent(jTextMail)
+                            .addComponent(jTextPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))
                 .addContainerGap(414, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -132,15 +134,15 @@ public class TeacherABC extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -196,13 +198,21 @@ public class TeacherABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextAddress;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextLastName1;
     private javax.swing.JTextField jTextLastName2;
+    private javax.swing.JTextField jTextMail;
     private javax.swing.JTextField jTextName;
+    private javax.swing.JTextField jTextPassword;
+    private javax.swing.JTextField jTextPhone;
     // End of variables declaration//GEN-END:variables
 
-
+private void initValues(){
+    jTextName.setText(teacherDao.getName());
+    jTextLastName1.setText(teacherDao.getFirstLastName());
+    jTextLastName2.setText(teacherDao.getSecondLastName());
+    jTextAddress.setText(null);
+    jTextPhone.setText(teacherDao.getPhone());
+    jTextMail.setText(teacherDao.getEmail());
+    jTextPassword.setText(teacherDao.getPassword());
+}
 }
