@@ -9,6 +9,7 @@ import controlador.interfaces.FieldValuable;
 import javax.swing.text.JTextComponent;
 import javax.swing.JOptionPane;
 import vista.Login;
+import vista.TeacherABC;
 import controlador.interfaces.Executable;
 import modelo.dao.LoginDao;
 import modelo.dao.impl.LoginDaoImpl;
@@ -82,7 +83,9 @@ public class LoginControlador implements FieldValuable,Executable{
             
             if (loginSuccessful)
             {
-                
+                TeacherABC teacherabc = new TeacherABC();
+                teacherabc.setVisible(true);
+                login.setVisible(false);
             }
             else
             {
