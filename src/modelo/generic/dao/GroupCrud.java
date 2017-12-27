@@ -6,35 +6,35 @@
 package modelo.generic.dao;
 
 import java.util.List;
-import modelo.dao.LevelDao;
+import modelo.dao.GroupDao;
 
 /**
  *
  * @author emedina
  */
-public interface LevelCrud {
+public interface GroupCrud {
+    
+     /**
+     *
+     * @param object
+     */
+    public abstract void insert(GroupDao object);
     
     /**
      *
      * @param object
      */
-    public abstract void insert(LevelDao object);
+    public abstract void delete(GroupDao object);
     
     /**
      *
      * @param object
      */
-    public abstract void delete(LevelDao object);
-    
-    /**
-     *
-     * @param object
-     */
-    public abstract void update(LevelDao object);
+    public abstract void update(GroupDao object);
     
     /**
      *
      * @return
      */
-    public abstract List<LevelDao> select();
+    public abstract List<GroupDao> select();
 }

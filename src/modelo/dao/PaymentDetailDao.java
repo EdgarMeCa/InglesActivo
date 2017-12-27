@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author emedina
  */
-public class PayDetail {
+public class PaymentDetailDao {
     private int id;
     private int hours;
     private double pay;
@@ -20,11 +20,11 @@ public class PayDetail {
     private int payment; //FK
     private int studentGroup; //FK
 
-    public PayDetail() {
+    public PaymentDetailDao() {
         
     }
 
-    public PayDetail(int id, int hours, double pay, String payType, Date date, int payment, int studentGroup) {
+    public PaymentDetailDao(int id, int hours, double pay, String payType, Date date, int payment, int studentGroup) {
         this.id = id;
         this.hours = hours;
         this.pay = pay;

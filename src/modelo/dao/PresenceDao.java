@@ -9,17 +9,17 @@ package modelo.dao;
  *
  * @author emedina
  */
-public class Presence {
+public class PresenceDao {
     private int id;
     private boolean value;
     private String description;
     private int studentGroup; //FK
 
-    public Presence() {
+    public PresenceDao() {
         
     }
 
-    public Presence(int id, boolean value, String description, int studentGroup) {
+    public PresenceDao(int id, boolean value, String description, int studentGroup) {
         this.id = id;
         this.value = value;
         this.description = description;

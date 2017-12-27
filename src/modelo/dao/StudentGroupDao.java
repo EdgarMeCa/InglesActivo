@@ -9,17 +9,17 @@ package modelo.dao;
  *
  * @author emedina
  */
-public class StudentGroup {
+public class StudentGroupDao {
     private int id;
     private int score;
     private int student; //FK
     private int group;   //FK
 
-    public StudentGroup() {
+    public StudentGroupDao() {
         
     }
 
-    public StudentGroup(int id, int score, int student, int group) {
+    public StudentGroupDao(int id, int score, int student, int group) {
         this.id = id;
         this.score = score;
         this.student = student;
