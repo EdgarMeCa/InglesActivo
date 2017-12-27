@@ -72,6 +72,9 @@ public class LoginControlador implements FieldValuable,Executable{
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void doAction() {
         if(validateRequiredFilds())

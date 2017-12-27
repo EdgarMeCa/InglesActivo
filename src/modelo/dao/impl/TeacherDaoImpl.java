@@ -27,14 +27,9 @@ public class TeacherDaoImpl implements TeacherCrud {
     
     @Override
     public void insert(TeacherDao object) {
-        String table = "teacher";
-        String query = "INSERT INTO " + table + " VALUES (NULL," +
-                        object.getName()           + "," +
-                        object.getFirstLastName()  + "," +
-                        object.getSecondLastName() + "," +
-                        object.getPhone()          + "," +
-                        object.getEmail()          + "," +
-                        object.getPassword()       + ");";
+  
+        String query = "";
+                        
         try
         {
             connection = DBConnection.getInstance().openConnection();
@@ -43,7 +38,7 @@ public class TeacherDaoImpl implements TeacherCrud {
         }
         catch (SQLException ex)
         {
-            LOGGER.log(Level.SEVERE, "TeacherDaoImpl, insert(), Error to insert data to the database : {0}", ex.getMessage());
+            //LOGGER.log(Level.SEVERE, "TeacherDaoImpl, insert(), Error to insert data to the database : {0}", ex.getMessage());
         }
         finally
         {
@@ -54,7 +49,7 @@ public class TeacherDaoImpl implements TeacherCrud {
             } 
             catch (SQLException ex)
             {
-                LOGGER.log(Level.SEVERE, "TeacherDaoImpl, insert(), Error to close the database connection : {0}", ex.getMessage());
+                //LOGGER.log(Level.SEVERE, "TeacherDaoImpl, insert(), Error to close the database connection : {0}", ex.getMessage());
             }
             
         }
