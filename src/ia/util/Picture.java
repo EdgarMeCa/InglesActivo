@@ -5,6 +5,7 @@
  */
 package ia.util;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -44,6 +45,7 @@ public class Picture extends JPanel {
     
     private void initComponents() {
         this.setSize(width, heigth);
+        this.setBackground(Color.WHITE);
         loadImage();
     }
     

@@ -17,11 +17,7 @@ import modelo.dao.impl.LoginDaoImpl;
  * @author emedina
  */
 public class LoginControlador implements FieldValuable {
-    private Login login = null;
-    
-    public LoginControlador() {
-       
-    }
+    private Login login;
 
     public LoginControlador(Login login) {
         this.login = login;
