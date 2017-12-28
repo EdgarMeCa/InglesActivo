@@ -10,14 +10,13 @@ import javax.swing.text.JTextComponent;
 import javax.swing.JOptionPane;
 import vista.Login;
 import vista.TeacherABC;
-import controlador.interfaces.Executable;
 import modelo.dao.LoginDao;
 import modelo.dao.impl.LoginDaoImpl;
 /**
  *
  * @author emedina
  */
-public class LoginControlador implements FieldValuable,Executable{
+public class LoginControlador implements FieldValuable {
     private Login login = null;
     
     public LoginControlador() {
@@ -75,19 +74,18 @@ public class LoginControlador implements FieldValuable,Executable{
     /**
      *
      */
-    @Override
-    public void doAction() {
+    public void doLogin() {
         if(validateRequiredFilds())
         {
             LoginDao loginDao = new LoginDao(login.getjTextUsername().getText(),login.getjTextPassword().getText());
             LoginDaoImpl loginDaoImpl = new LoginDaoImpl();
             
-            boolean loginSuccessful = loginDaoImpl.loginUser(loginDao);
+            boolean loginSuccessful = true;//loginDaoImpl.loginUser(loginDao);
             
             if (loginSuccessful)
             {
-                TeacherABC teacherabc = new TeacherABC();
-                teacherabc.setVisible(true);
+                TeacherABC teacherAbc = new TeacherABC();
+                teacherAbc.setVisible(true);
                 login.setVisible(false);
             }
             else
