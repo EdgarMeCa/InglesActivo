@@ -8,7 +8,6 @@ package controlador;
 import controlador.interfaces.FieldValuable;
 import ia.util.FileChooser;
 import ia.util.Picture;
-import java.awt.Color;
 import javax.swing.text.JTextComponent;
 import javax.swing.JPanel;
 import vista.TeacherABC;
@@ -44,7 +43,6 @@ public class TeacherAbcControlador implements FieldValuable{
         JPanel panelPicture = teacherUI.getjPanelPicture();
         Picture picture = new Picture(panelPicture.getWidth(),panelPicture.getHeight(),chooser.getPath());
         panelPicture.removeAll();
-        panelPicture.setBackground(Color.WHITE);
         panelPicture.add(picture);
         panelPicture.repaint();
     }
