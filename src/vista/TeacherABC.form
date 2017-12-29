@@ -243,6 +243,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextName">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextNameKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -250,6 +253,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextLastName1">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextLastName1KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -259,6 +265,7 @@
     <Component class="javax.swing.JTextField" name="jTextLastName2">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextLastName2ActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextLastName2KeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -267,10 +274,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextAddress">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextAddressKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextPhoneHome">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextPhoneHomeKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextPhonePersonal">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextPhonePersonalKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -288,6 +304,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextEmailPersonal">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextEmailPersonalKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -295,6 +314,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextEmailWork">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextEmailWorkKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
       <Properties>
@@ -309,6 +331,7 @@
     <Component class="javax.swing.JTextField" name="jTextCurp">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextCurpActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextCurpKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">

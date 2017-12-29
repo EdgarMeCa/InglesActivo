@@ -5,20 +5,25 @@
  */
 package ia.util;
 
-import javax.swing.JOptionPane;
-import javax.swing.text.JTextComponent;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import java.util.regex.*;
 
 /**
  *
  * @author emedina
  */
 public class FieldValidate {
+
+    private FieldValidate() {
+        
+    }
     
     /**
      *
      * @return 
      */
-    public boolean validateRequiredFilds() {
+    public static boolean validateRequiredFilds() {
        return true;
     }
 
@@ -27,23 +32,38 @@ public class FieldValidate {
      * @param component
      * @return
      */
-    public boolean isFieldNotEmpty(JTextComponent component) {
+    public static boolean isFieldNotEmpty(JTextField component) {
        return !component.getText().isEmpty();
-    }
-    
-    public boolean isNumberPhone(String value, int length) {
-       return true; 
     }
     
     /**
      *
-     * @param message
+     * @param component
+     * @return
      */
-    public void showMessage(String message){
-        if(!message.isEmpty())
-        {
-           JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+    public static boolean isFieldNotEmpty(JTextArea component) {
+       return !component.getText().isEmpty();
     }
     
+    /**
+     *
+     * @param value
+     * @return
+     */
+    public static boolean isPhoneNumber(String value) {
+        Pattern p = Pattern.compile("^(?:\\+|-)?\\d+$");
+        Matcher m = p.matcher(value);
+        return m.find();
+    }
+    
+    /**
+     *
+     * @param value
+     * @return
+     */
+    public static boolean isEmail(String value) {
+        Pattern p = Pattern.compile("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$");
+        Matcher m = p.matcher(value);
+        return m.matches();
+    }
 }

@@ -98,7 +98,19 @@ public class TeacherABC extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre");
 
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNameKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Apellido Paterno");
+
+        jTextLastName1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextLastName1KeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Apellido Materno");
 
@@ -107,8 +119,31 @@ public class TeacherABC extends javax.swing.JFrame {
                 jTextLastName2ActionPerformed(evt);
             }
         });
+        jTextLastName2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextLastName2KeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Direccion");
+
+        jTextAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextAddressKeyTyped(evt);
+            }
+        });
+
+        jTextPhoneHome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPhoneHomeKeyTyped(evt);
+            }
+        });
+
+        jTextPhonePersonal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPhonePersonalKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("No. Telefonico");
 
@@ -116,7 +151,19 @@ public class TeacherABC extends javax.swing.JFrame {
 
         jLabel8.setText("Email personal");
 
+        jTextEmailPersonal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextEmailPersonalKeyTyped(evt);
+            }
+        });
+
         jLabel9.setText("Email laboral");
+
+        jTextEmailWork.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextEmailWorkKeyTyped(evt);
+            }
+        });
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -125,6 +172,11 @@ public class TeacherABC extends javax.swing.JFrame {
         jTextCurp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCurpActionPerformed(evt);
+            }
+        });
+        jTextCurp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextCurpKeyTyped(evt);
             }
         });
 
@@ -390,6 +442,77 @@ public class TeacherABC extends javax.swing.JFrame {
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
         controlador.clear();
     }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jTextNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyTyped
+        if (this.jTextName.getText().length() == 40) {
+            evt.consume();
+        }
+        if (!Character.isLetter(evt.getKeyChar())) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextNameKeyTyped
+
+    private void jTextLastName1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextLastName1KeyTyped
+        if (this.jTextLastName1.getText().length() == 40) {
+            evt.consume();
+        }
+        if (!Character.isLetter(evt.getKeyChar())) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextLastName1KeyTyped
+
+    private void jTextLastName2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextLastName2KeyTyped
+        if (this.jTextLastName2.getText().length() == 40) {
+            evt.consume();
+        }
+        if (!Character.isLetter(evt.getKeyChar())) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextLastName2KeyTyped
+
+    private void jTextAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAddressKeyTyped
+        if (this.jTextAddress.getText().length() == 100){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextAddressKeyTyped
+
+    private void jTextPhoneHomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPhoneHomeKeyTyped
+        if (this.jTextPhoneHome.getText().length() == 20) {
+            evt.consume();
+        }
+        char digit = evt.getKeyChar();
+        if (digit < '0' || digit > '9' || digit != '+' || digit != '-') {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextPhoneHomeKeyTyped
+
+    private void jTextPhonePersonalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPhonePersonalKeyTyped
+        if (this.jTextPhonePersonal.getText().length() == 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextPhonePersonalKeyTyped
+
+    private void jTextEmailWorkKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEmailWorkKeyTyped
+         if (this.jTextEmailWork.getText().length() == 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextEmailWorkKeyTyped
+
+    private void jTextEmailPersonalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEmailPersonalKeyTyped
+         if (this.jTextEmailPersonal.getText().length() == 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextEmailPersonalKeyTyped
+
+    private void jTextCurpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCurpKeyTyped
+         if (this.jTextCurp.getText().length() == 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextCurpKeyTyped
 
     /**
      * @param args the command line arguments
