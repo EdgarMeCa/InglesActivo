@@ -16,64 +16,20 @@ import modelo.dao.impl.LoginDaoImpl;
  *
  * @author emedina
  */
-public class LoginControlador implements FieldValuable {
-    private Login login;
+public class LoginControlador  {
+    private Login loginUI;
 
-    public LoginControlador(Login login) {
-        this.login = login;
-    }
-
-    /**
-     *
-     * @return 
-     */
-    @Override
-    public boolean validateRequiredFilds() {
-        String message = "";
-        boolean result = true;
-        if (!validateNotEmptyField(login.getjTextUsername()))
-        {
-            message += "El campo usuario no puede estar vacio. \n";
-            result = false;
-        }
-        if (!validateNotEmptyField(login.getjTextPassword()))
-        {
-            message += "El campo contraseña no puede estar vacio. \n";
-            result = false;
-        }
-        showMessage(message);
-        return result;
-    }
-
-    /**
-     *
-     * @param component
-     * @return
-     */
-    @Override
-    public boolean validateNotEmptyField(JTextComponent component) {
-       return !component.getText().isEmpty();
-    }
-    
-    /**
-     *
-     * @param message
-     */
-    @Override
-    public void showMessage(String message){
-        if(!message.isEmpty())
-        {
-           JOptionPane.showMessageDialog(login, message, "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+    public LoginControlador(Login loginUI) {
+        this.loginUI = loginUI;
     }
 
     /**
      *
      */
     public void doLogin() {
-        if(validateRequiredFilds())
+        if(true/*validateRequiredFilds()*/)
         {
-            LoginDao loginDao = new LoginDao(login.getjTextUsername().getText(),login.getjTextPassword().getText());
+            LoginDao loginDao = new LoginDao(loginUI.getjTextUsername().getText(),loginUI.getjTextPassword().getText());
             LoginDaoImpl loginDaoImpl = new LoginDaoImpl();
             
             boolean loginSuccessful = true;//loginDaoImpl.loginUser(loginDao);
@@ -82,11 +38,11 @@ public class LoginControlador implements FieldValuable {
             {
                 TeacherABC teacherAbc = new TeacherABC();
                 teacherAbc.setVisible(true);
-                login.setVisible(false);
+                loginUI.setVisible(false);
             }
             else
             {
-                JOptionPane.showMessageDialog(login, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);   
+                JOptionPane.showMessageDialog(loginUI, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);   
             }
         }
     }
