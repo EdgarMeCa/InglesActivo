@@ -13,20 +13,23 @@ public interface TeacherCrud {
     /**
      *
      * @param object
+     * @return 
      */
-    public abstract void insert(TeacherDao object);
+    public abstract boolean insert(TeacherDao object);
     
     /**
      *
      * @param object
+     * @return 
      */
-    public abstract void delete(TeacherDao object);
+    public abstract boolean delete(TeacherDao object);
     
     /**
      *
      * @param object
+     * @return 
      */
-    public abstract void update(TeacherDao object);
+    public abstract boolean update(TeacherDao object);
     
     /**
      *

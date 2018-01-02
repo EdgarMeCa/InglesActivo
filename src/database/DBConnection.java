@@ -14,7 +14,6 @@ import java.util.logging.*;
 public class DBConnection implements DatabaseCredential {
     
     private static  DBConnection DBCONNECTION = null;
-    private static final  Logger LOGGER = null;
     private Connection conn = null;
     
     private DBConnection () {

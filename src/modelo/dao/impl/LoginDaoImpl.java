@@ -12,13 +12,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import modelo.generic.dao.Login;
-import database.DBTables;
 
 /**
  *
  * @author ASUS
  */
-public class LoginDaoImpl implements Login,DBTables{
+public class LoginDaoImpl implements Login{
     
     private Statement statement = null;
     private Connection connection = null;
@@ -26,9 +25,8 @@ public class LoginDaoImpl implements Login,DBTables{
 
     @Override
     public boolean loginUser(LoginDao object) {
-        String query = "SELECT * FROM " + TEACHER + " WHERE Correo = '" + object.getUsername() + "' AND Password = '" + object.getPassword() + "';";
+        String query = "SELECT * FROM teacher WHERE Correo = '" + object.getUsername() + "' AND Password = '" + object.getPassword() + "';";
         boolean loginSuccessful = false;
-        int resultCount = 0;
         
         try
         {
@@ -36,20 +34,7 @@ public class LoginDaoImpl implements Login,DBTables{
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             
-            while(resultSet.next())
-            {
-                resultCount++;
-            }
-            
-            if (validateLogin(resultCount))
-            {
-                loginSuccessful = true;
-            }
-            else
-            {
-                loginSuccessful = false;
-                throw new Exception("********Login failed check credentials********");
-            }
+            loginSuccessful = validateLogin(resultSet);
         }
         catch (SQLException ex)
         {
@@ -75,7 +60,12 @@ public class LoginDaoImpl implements Login,DBTables{
         return loginSuccessful;
     }
     
-    private boolean validateLogin(int numberResult){
-        return numberResult == 1;
+    private boolean validateLogin(ResultSet result) throws SQLException{
+        int count = 0;
+        while(result.next())
+        {
+            count++;
+        }
+        return count == 1;
     }  
 }
