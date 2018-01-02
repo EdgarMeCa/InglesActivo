@@ -10,6 +10,7 @@ import java.util.logging.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import database.DBConnection;
 import modelo.generic.dao.TeacherCrud;
@@ -24,6 +25,7 @@ public class TeacherDaoImpl implements TeacherCrud {
     private Connection connection = null;
     private ResultSet resultSet = null;
     private static final Logger LOGGER = null;
+    private PreparedStatement ps = null;
     
     @Override
     public boolean insert(TeacherDao object) {
@@ -57,6 +59,7 @@ public class TeacherDaoImpl implements TeacherCrud {
         try
         {
             connection = DBConnection.getInstance().openConnection();
+            //ps = connection.prepareStatement(query);
             statement = connection.createStatement();
             statement.execute(query);
             result = true;
