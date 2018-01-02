@@ -21,14 +21,6 @@ public class FieldValidate {
     
     /**
      *
-     * @return 
-     */
-    public static boolean validateRequiredFilds() {
-       return true;
-    }
-
-    /**
-     *
      * @param component
      * @return
      */

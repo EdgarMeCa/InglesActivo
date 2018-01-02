@@ -59,5 +59,4 @@ public class Picture extends JPanel {
             ex.printStackTrace();
         }
     }
-    
 }
