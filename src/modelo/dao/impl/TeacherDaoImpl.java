@@ -6,6 +6,7 @@
 package modelo.dao.impl;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -146,6 +147,40 @@ public class TeacherDaoImpl implements TeacherCrud {
 
     @Override
     public List<TeacherDao> select() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<TeacherDao> tempList = new ArrayList<>();
+        TeacherDao tempTeacher = new TeacherDao();
+        String query = "SELECT * FROM teacher";
+        try
+        {
+            connection = DBConnection.getInstance().openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            
+            while (resultSet.next()) 
+            {
+                tempTeacher.setId(resultSet.getInt(1));
+                tempTeacher.setName(resultSet.getString(2));
+                tempTeacher.setFirstLastName(resultSet.getString(3));
+                tempTeacher.setSecondLastName(resultSet.getString(4));
+            }
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                statement.close();
+                connection.close();
+            } 
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+            
+        }
+        return tempList;
     }
 }
