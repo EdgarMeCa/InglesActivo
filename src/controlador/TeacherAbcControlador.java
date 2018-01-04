@@ -5,37 +5,23 @@
  */
 package controlador;
 
-import controlador.interfaces.FieldValuable;
+import ia.util.ConvertDate;
 import ia.util.FileChooser;
 import ia.util.Picture;
-import javax.swing.text.JTextComponent;
 import javax.swing.JPanel;
+import modelo.dao.TeacherDao;
 import vista.TeacherABC;
 
 /**
  *
  * @author emedina
  */
-public class TeacherAbcControlador implements FieldValuable{
+public class TeacherAbcControlador {
     private TeacherABC teacherUI;
-
+    private TeacherDao teacherDao;
+    
     public TeacherAbcControlador(TeacherABC teacherUI) {
         this.teacherUI = teacherUI;
-    }
-    
-    @Override
-    public boolean validateRequiredFilds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean validateNotEmptyField(JTextComponent component) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void showMessage(String message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void loadPicture() {
@@ -71,4 +57,31 @@ public class TeacherAbcControlador implements FieldValuable{
         teacherUI.getjDateEnd().setDate(null);
         erasePicture();
     }
+    
+    public void insertData() {
+        loadTeacherDao();
+        
+    }
+    
+    private void loadTeacherDao(){
+        teacherDao = new TeacherDao();
+        
+        teacherDao.setAddress(teacherUI.getjTextAddress().getText());
+        teacherDao.setCedula(teacherUI.getjTextCedula().getText());
+        teacherDao.setCurp(teacherUI.getjTextCurp().getText());
+        teacherDao.setEndDate(ConvertDate.toSqlDate(teacherUI.getjDateEnd().getDate()));
+        teacherDao.setExperience(teacherUI.getjTextAreaExperience().getText());
+        teacherDao.setFirstLastName(teacherUI.getjTextLastName1().getText());
+        teacherDao.setHomePhone(teacherUI.getjTextPhoneHome().getText());
+        teacherDao.setLevel(teacherUI.getjComboBoxLevel().getSelectedIndex());
+        teacherDao.setName(teacherUI.getjTextName().getText());
+        teacherDao.setPassword(teacherUI.getjTextPassword().getText());
+        teacherDao.setPersonalEmail(teacherUI.getjTextEmailPersonal().getText());
+        teacherDao.setPersonalPhone(teacherUI.getjTextPhonePersonal().getText());
+        teacherDao.setPicture(teacherUI.getPath());
+        teacherDao.setSecondLastName(teacherUI.getjTextLastName2().getText());
+        teacherDao.setStartDate(ConvertDate.toSqlDate(teacherUI.getjDateStart().getDate()));
+        teacherDao.setStatus(teacherUI.getjComboBoxStatus().getSelectedIndex());
+        teacherDao.setWorkEmail(teacherUI.getjTextEmailWork().getText());
+    } 
 }

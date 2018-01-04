@@ -13,10 +13,17 @@ import javax.swing.JFileChooser;
 public class FileChooser {
     private final JFileChooser fileChooser; 
 
+    /**
+     *
+     */
     public FileChooser() {
         fileChooser = new JFileChooser();
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPath() {
         String path = "";
         int selected = fileChooser.showOpenDialog(null);
