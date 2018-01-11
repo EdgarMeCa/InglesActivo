@@ -11,6 +11,7 @@ import ia.util.Picture;
 import javax.swing.JPanel;
 import modelo.dao.TeacherDao;
 import vista.TeacherABC;
+import modelo.dao.impl.TeacherDaoImpl;
 
 /**
  *
@@ -60,7 +61,7 @@ public class TeacherAbcControlador {
     
     public void insertData() {
         loadTeacherDao();
-        
+        new TeacherDaoImpl().insert(teacherDao);
     }
     
     private void loadTeacherDao(){
