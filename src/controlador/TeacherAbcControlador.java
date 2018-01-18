@@ -66,7 +66,6 @@ public class TeacherAbcControlador {
     
     private void loadTeacherDao(){
         teacherDao = new TeacherDao();
-        
         teacherDao.setAddress(teacherUI.getjTextAddress().getText());
         teacherDao.setCedula(teacherUI.getjTextCedula().getText());
         teacherDao.setCurp(teacherUI.getjTextCurp().getText());
