@@ -17,14 +17,14 @@ import controlador.TeacherAbcControlador;
  *
  * @author emedina
  */
-public class TeacherABC extends javax.swing.JFrame {
+public class TeacherUI_ABC extends javax.swing.JFrame {
     private TeacherDao teacherDao;
     private TeacherAbcControlador controlador = new TeacherAbcControlador(this);
     
     /**
      * Creates new form TeacherABC with a new teacherDao
      */
-    public TeacherABC() {
+    public TeacherUI_ABC() {
         initComponents();
         setLocationRelativeTo(null);
         teacherDao = new TeacherDao();
@@ -35,7 +35,7 @@ public class TeacherABC extends javax.swing.JFrame {
      * Creates new form TeacherABC with a teacherDao object 
      * @param teacherDao
      */
-    public TeacherABC(TeacherDao teacherDao){
+    public TeacherUI_ABC(TeacherDao teacherDao){
         initComponents();
         setLocationRelativeTo(null);
         this.teacherDao = teacherDao;
@@ -238,6 +238,11 @@ public class TeacherABC extends javax.swing.JFrame {
         });
 
         jButtonAdd.setText("Agregar");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
 
         jButtonUpdate.setText("Actualizar");
 
@@ -512,13 +517,13 @@ public class TeacherABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextPhonePersonalKeyTyped
 
     private void jTextEmailWorkKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEmailWorkKeyTyped
-         if (this.jTextEmailWork.getText().length() == 20) {
+         if (this.jTextEmailWork.getText().length() == 100) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextEmailWorkKeyTyped
 
     private void jTextEmailPersonalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEmailPersonalKeyTyped
-         if (this.jTextEmailPersonal.getText().length() == 20) {
+         if (this.jTextEmailPersonal.getText().length() == 100) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextEmailPersonalKeyTyped
@@ -528,6 +533,10 @@ public class TeacherABC extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTextCurpKeyTyped
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        controlador.insertData();
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -546,20 +555,21 @@ public class TeacherABC extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeacherABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherUI_ABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeacherABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherUI_ABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeacherABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherUI_ABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeacherABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherUI_ABC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TeacherABC().setVisible(true);
+                new TeacherUI_ABC().setVisible(true);
             }
         });
     }

@@ -10,7 +10,7 @@ import ia.util.FileChooser;
 import ia.util.Picture;
 import javax.swing.JPanel;
 import modelo.dao.TeacherDao;
-import vista.TeacherABC;
+import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
 
 /**
@@ -18,10 +18,10 @@ import modelo.dao.impl.TeacherDaoImpl;
  * @author emedina
  */
 public class TeacherAbcControlador {
-    private TeacherABC teacherUI;
+    private TeacherUI_ABC teacherUI;
     private TeacherDao teacherDao;
     
-    public TeacherAbcControlador(TeacherABC teacherUI) {
+    public TeacherAbcControlador(TeacherUI_ABC teacherUI) {
         this.teacherUI = teacherUI;
     }
     

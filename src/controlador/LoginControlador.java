@@ -8,8 +8,8 @@ package controlador;
 import controlador.interfaces.FieldValuable;
 import javax.swing.text.JTextComponent;
 import javax.swing.JOptionPane;
-import vista.Login;
-import vista.TeacherABC;
+import vista.LoginUI;
+import vista.TeacherUI_ABC;
 import modelo.dao.LoginDao;
 import modelo.dao.impl.LoginDaoImpl;
 /**
@@ -17,9 +17,9 @@ import modelo.dao.impl.LoginDaoImpl;
  * @author emedina
  */
 public class LoginControlador  {
-    private Login loginUI;
+    private LoginUI loginUI;
 
-    public LoginControlador(Login loginUI) {
+    public LoginControlador(LoginUI loginUI) {
         this.loginUI = loginUI;
     }
 
@@ -36,7 +36,7 @@ public class LoginControlador  {
             
             if (loginSuccessful)
             {
-                TeacherABC teacherAbc = new TeacherABC();
+                TeacherUI_ABC teacherAbc = new TeacherUI_ABC();
                 teacherAbc.setVisible(true);
                 loginUI.setVisible(false);
             }
