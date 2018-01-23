@@ -8,28 +8,25 @@ package modelo.generic.dao;
 import java.util.List;
 import modelo.dao.TeacherDao;
 
-public interface TeacherCrud {
+public interface Crud {
     
     /**
      *
-     * @param object
      * @return 
      */
-    public abstract boolean insert(TeacherDao object);
+    public abstract boolean insert();
     
     /**
      *
-     * @param object
      * @return 
      */
-    public abstract boolean delete(TeacherDao object);
+    public abstract boolean delete();
     
     /**
      *
-     * @param object
      * @return 
      */
-    public abstract boolean update(TeacherDao object);
+    public abstract boolean update();
     
     /**
      *

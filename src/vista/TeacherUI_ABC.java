@@ -514,6 +514,11 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         if (this.jTextPhonePersonal.getText().length() == 20) {
             evt.consume();
         }
+        char digit = evt.getKeyChar();
+        if (digit < '0' || digit > '9' || digit != '+' || digit != '-') {
+            getToolkit().beep();
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextPhonePersonalKeyTyped
 
     private void jTextEmailWorkKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEmailWorkKeyTyped

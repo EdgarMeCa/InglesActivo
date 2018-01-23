@@ -61,7 +61,6 @@ public class TeacherAbcControlador {
     
     public void insertData() {
         loadTeacherDao();
-        new TeacherDaoImpl().insert(teacherDao);
     }
     
     private void loadTeacherDao(){

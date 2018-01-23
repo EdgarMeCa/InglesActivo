@@ -11,26 +11,94 @@ import java.util.logging.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.PreparedStatement;
 import java.sql.Connection;
 import database.DBConnection;
-import modelo.generic.dao.TeacherCrud;
+import modelo.generic.dao.Crud;
 import modelo.dao.TeacherDao;
 
 /**
  *
  * @author ASUS
  */
-public class TeacherDaoImpl implements TeacherCrud {
+public class TeacherDaoImpl implements Crud {
     private Statement statement = null;
     private Connection connection = null;
     private ResultSet resultSet = null;
     private static final Logger LOGGER = null;
-    private PreparedStatement ps = null;
+    private TeacherDao teacherDao = null;
+
+    public TeacherDaoImpl() {
+        
+    }
+
+    public TeacherDaoImpl(TeacherDao teacherDao) {
+        this.teacherDao = teacherDao;
+    }
     
     @Override
-    public boolean insert(TeacherDao object) {
-        boolean result = false;
+    public boolean insert() {
+        String query = createQueryInsert(); 
+        boolean result = CrudOperation.insert(query);
+        return result;
+    }
+
+    @Override
+    public boolean delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update() {
+        String query = createQueryUpdate();
+        boolean result = CrudOperation.update(query);
+        return result;
+    }
+
+    @Override
+    public List<TeacherDao> select() {
+        String query = "SELECT * FROM teacher";
+        ResultSet result = CrudOperation.select(query);
+        List<TeacherDao> list = resultSetToList(result);
+        return list;
+    }
+    
+    private List<TeacherDao> resultSetToList(ResultSet result) {
+        List<TeacherDao> list = new ArrayList<>();
+        try {
+            while(result.next()) {
+                list.add(fillTeacherDao(result));
+            }
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+    
+    private TeacherDao fillTeacherDao(ResultSet element) throws SQLException {
+        TeacherDao object = new TeacherDao();
+            object.setId(element.getInt(null));
+            object.setName(element.getString(null));
+            object.setFirstLastName(element.getString(null));
+            object.setSecondLastName(element.getString(null));
+            object.setAddress(element.getString(null));
+            object.setCedula(element.getString(null));
+            object.setCurp(element.getString(null));
+            object.setEndDate(element.getDate(null));
+            object.setExperience(element.getString(null));
+            object.setHomePhone(element.getString(null));
+            object.setLevel(element.getInt(null));
+            object.setPassword(element.getString(null));
+            object.setPersonalEmail(element.getString(null));
+            object.setPersonalPhone(element.getString(null));
+            object.setPicture(element.getString(null));
+            object.setStartDate(element.getDate(null));
+            object.setStatus(element.getInt(null));
+            object.setWorkEmail(element.getString(null));
+        return object;
+    }
+    
+     private String createQueryInsert() {
         String query = "";
         
         query += "INSERT INTO" + " ";
@@ -38,149 +106,52 @@ public class TeacherDaoImpl implements TeacherCrud {
         query += "VALUES"      + " ";
         query += "("           + " ";
         query += "null"        + ",";
-        query += "'" + object.getName()           + "'" + ",";
-        query += "'" + object.getFirstLastName()  + "'" + ",";
-        query += "'" + object.getSecondLastName() + "'" + ",";
-        query += "'" + object.getHomePhone()      + "'" + ",";
-        query += "'" + object.getPersonalPhone()  + "'" + ",";
-        query += "'" + object.getPersonalEmail()  + "'" + ",";
-        query += "'" + object.getWorkEmail()      + "'" + ",";
-        query += "'" + object.getPassword()       + "'" + ",";
-        query += "'" + object.getCurp()           + "'" + ",";
-        query += "'" + object.getCedula()         + "'" + ",";
-        query += "'" + object.getExperience()     + "'" + ",";
-        query += "'" + object.getPicture()        + "'" + ",";
-        query += "'" + object.getStartDate()      + "'" + ",";
-        query += "'" + object.getEndDate()        + "'" + ",";
-        query += "'" + object.getAddress()        + "'" + ",";
-        query += "'" + object.getLevel()          + "'" + ",";
-        query += "'" + object.getStatus()         + "'";
+        query += "'" + teacherDao.getName()           + "'" + ",";
+        query += "'" + teacherDao.getFirstLastName()  + "'" + ",";
+        query += "'" + teacherDao.getSecondLastName() + "'" + ",";
+        query += "'" + teacherDao.getHomePhone()      + "'" + ",";
+        query += "'" + teacherDao.getPersonalPhone()  + "'" + ",";
+        query += "'" + teacherDao.getPersonalEmail()  + "'" + ",";
+        query += "'" + teacherDao.getWorkEmail()      + "'" + ",";
+        query += "'" + teacherDao.getPassword()       + "'" + ",";
+        query += "'" + teacherDao.getCurp()           + "'" + ",";
+        query += "'" + teacherDao.getCedula()         + "'" + ",";
+        query += "'" + teacherDao.getExperience()     + "'" + ",";
+        query += "'" + teacherDao.getPicture()        + "'" + ",";
+        query += "'" + teacherDao.getStartDate()      + "'" + ",";
+        query += "'" + teacherDao.getEndDate()        + "'" + ",";
+        query += "'" + teacherDao.getAddress()        + "'" + ",";
+        query += "'" + teacherDao.getLevel()          + "'" + ",";
+        query += "'" + teacherDao.getStatus()         + "'";
         query += ")";
-                        
-        try
-        {
-            connection = DBConnection.getInstance().openConnection();
-            //ps = connection.prepareStatement(query);
-            statement = connection.createStatement();
-            statement.execute(query);
-            result = true;
-        }
-        catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-                statement.close();
-                connection.close();
-            } 
-            catch (SQLException ex)
-            {
-                ex.printStackTrace();
-            }
-            
-        }
-        return result;
+        return query;
     }
-
-    @Override
-    public boolean delete(TeacherDao object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean update(TeacherDao object) {
-        boolean result = false;
+     
+    private String createQueryUpdate() {
         String query = "";
         
         query += "UPDATE"  + " ";
         query += "teacher" + " ";
         query += "SET"     + " ";
-        query += "Name"          + " = " + object.getName()           + ",";
-        query += "LName1"        + " = " + object.getFirstLastName()  + ",";
-        query += "LName2"        + " = " + object.getSecondLastName() + ",";
-        query += "PhoneHome"     + " = " + object.getHomePhone()      + ",";
-        query += "PhonePersonal" + " = " + object.getPersonalPhone()  + ",";
-        query += "EmailPersonal" + " = " + object.getPersonalEmail()  + ",";
-        query += "EmailWork"     + " = " + object.getWorkEmail()      + ",";
-        query += "Password"      + " = " + object.getPassword()       + ",";
-        query += "Curp"          + " = " + object.getCurp()           + ",";
-        query += "Cedula"        + " = " + object.getCedula()         + ",";
-        query += "Experience"    + " = " + object.getExperience()     + ",";
-        query += "Picture"       + " = " + object.getPicture()        + ",";
-        query += "StartDate"     + " = " + object.getStartDate()      + ",";
-        query += "EndDate"       + " = " + object.getEndDate()        + ",";
-        query += "Address"       + " = " + object.getAddress()        + ",";
-        query += "Level"         + " = " + object.getLevel()          + ",";
-        query += "Status"        + " = " + object.getStatus()         + " ";
-        query += "WHERE"                                              + " ";
-        query += "idTeacher"     + " = " + object.getId();
-        
-        try
-        {
-            connection = DBConnection.getInstance().openConnection();
-            statement = connection.createStatement();
-            statement.execute(query);
-            result = true;
-        }
-        catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-                statement.close();
-                connection.close();
-            } 
-            catch (SQLException ex)
-            {
-                ex.printStackTrace();
-            }
-            
-        }
-        return result;
-    }
-
-    @Override
-    public List<TeacherDao> select() {
-        List<TeacherDao> tempList = new ArrayList<>();
-        TeacherDao tempTeacher = new TeacherDao();
-        String query = "SELECT * FROM teacher";
-        try
-        {
-            connection = DBConnection.getInstance().openConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-            
-            while (resultSet.next()) 
-            {
-                tempTeacher.setId(resultSet.getInt(1));
-                tempTeacher.setName(resultSet.getString(2));
-                tempTeacher.setFirstLastName(resultSet.getString(3));
-                tempTeacher.setSecondLastName(resultSet.getString(4));
-            }
-        }
-        catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-                statement.close();
-                connection.close();
-            } 
-            catch (SQLException ex)
-            {
-                ex.printStackTrace();
-            }
-            
-        }
-        return tempList;
+        query += "Name"          + " = " + teacherDao.getName()           + ",";
+        query += "LName1"        + " = " + teacherDao.getFirstLastName()  + ",";
+        query += "LName2"        + " = " + teacherDao.getSecondLastName() + ",";
+        query += "PhoneHome"     + " = " + teacherDao.getHomePhone()      + ",";
+        query += "PhonePersonal" + " = " + teacherDao.getPersonalPhone()  + ",";
+        query += "EmailPersonal" + " = " + teacherDao.getPersonalEmail()  + ",";
+        query += "EmailWork"     + " = " + teacherDao.getWorkEmail()      + ",";
+        query += "Password"      + " = " + teacherDao.getPassword()       + ",";
+        query += "Curp"          + " = " + teacherDao.getCurp()           + ",";
+        query += "Cedula"        + " = " + teacherDao.getCedula()         + ",";
+        query += "Experience"    + " = " + teacherDao.getExperience()     + ",";
+        query += "Picture"       + " = " + teacherDao.getPicture()        + ",";
+        query += "StartDate"     + " = " + teacherDao.getStartDate()      + ",";
+        query += "EndDate"       + " = " + teacherDao.getEndDate()        + ",";
+        query += "Address"       + " = " + teacherDao.getAddress()        + ",";
+        query += "Level"         + " = " + teacherDao.getLevel()          + ",";
+        query += "Status"        + " = " + teacherDao.getStatus()         + " ";
+        query += "WHERE"                                                  + " ";
+        query += "idTeacher"     + " = " + teacherDao.getId();
+        return query;
     }
 }

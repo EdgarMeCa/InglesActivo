@@ -50,5 +50,88 @@ public class CrudOperation {
             }
         }
         return result;
-    } 
+    }
+    
+     public static boolean update(String query) {
+        boolean result = false;
+        try
+        {
+            connection = DBConnection.getInstance().openConnection();
+            statement = connection.createStatement();
+            statement.execute(query);
+            result = true;
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                statement.close();
+                DBConnection.getInstance().closeConnection();
+            } 
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+        return result;
+    }
+     
+    public static boolean delete(String query) {
+        boolean result = false;
+        try
+        {
+            connection = DBConnection.getInstance().openConnection();
+            statement = connection.createStatement();
+            statement.execute(query);
+            result = true;
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                statement.close();
+                DBConnection.getInstance().closeConnection();
+            } 
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+        return result;
+    }
+    
+    public static ResultSet select(String query) {
+        try
+        {
+            connection = DBConnection.getInstance().openConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                statement.close();
+                connection.close();
+            } 
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+            
+        }
+        return resultSet;
+    }
 }
