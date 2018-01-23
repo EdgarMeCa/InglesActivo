@@ -130,7 +130,6 @@ public class CrudOperation {
             {
                 ex.printStackTrace();
             }
-            
         }
         return resultSet;
     }

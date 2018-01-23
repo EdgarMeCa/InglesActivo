@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.logging.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Connection;
-import database.DBConnection;
 import modelo.generic.dao.Crud;
 import modelo.dao.TeacherDao;
 
@@ -21,15 +18,8 @@ import modelo.dao.TeacherDao;
  * @author ASUS
  */
 public class TeacherDaoImpl implements Crud {
-    private Statement statement = null;
-    private Connection connection = null;
-    private ResultSet resultSet = null;
     private static final Logger LOGGER = null;
     private TeacherDao teacherDao = null;
-
-    public TeacherDaoImpl() {
-        
-    }
 
     public TeacherDaoImpl(TeacherDao teacherDao) {
         this.teacherDao = teacherDao;
@@ -77,24 +67,24 @@ public class TeacherDaoImpl implements Crud {
     
     private TeacherDao fillTeacherDao(ResultSet element) throws SQLException {
         TeacherDao object = new TeacherDao();
-            object.setId(element.getInt(null));
-            object.setName(element.getString(null));
-            object.setFirstLastName(element.getString(null));
-            object.setSecondLastName(element.getString(null));
-            object.setAddress(element.getString(null));
-            object.setCedula(element.getString(null));
-            object.setCurp(element.getString(null));
-            object.setEndDate(element.getDate(null));
-            object.setExperience(element.getString(null));
-            object.setHomePhone(element.getString(null));
-            object.setLevel(element.getInt(null));
-            object.setPassword(element.getString(null));
-            object.setPersonalEmail(element.getString(null));
-            object.setPersonalPhone(element.getString(null));
-            object.setPicture(element.getString(null));
-            object.setStartDate(element.getDate(null));
-            object.setStatus(element.getInt(null));
-            object.setWorkEmail(element.getString(null));
+        object.setId(element.getInt(null));
+        object.setName(element.getString(null));
+        object.setFirstLastName(element.getString(null));
+        object.setSecondLastName(element.getString(null));
+        object.setAddress(element.getString(null));
+        object.setCedula(element.getString(null));
+        object.setCurp(element.getString(null));
+        object.setEndDate(element.getDate(null));
+        object.setExperience(element.getString(null));
+        object.setHomePhone(element.getString(null));
+        object.setLevel(element.getInt(null));
+        object.setPassword(element.getString(null));
+        object.setPersonalEmail(element.getString(null));
+        object.setPersonalPhone(element.getString(null));
+        object.setPicture(element.getString(null));
+        object.setStartDate(element.getDate(null));
+        object.setStatus(element.getInt(null));
+        object.setWorkEmail(element.getString(null));
         return object;
     }
     

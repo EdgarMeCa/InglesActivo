@@ -19,7 +19,6 @@ import modelo.dao.impl.TeacherDaoImpl;
  */
 public class TeacherAbcControlador {
     private TeacherUI_ABC teacherUI;
-    private TeacherDao teacherDao;
     
     public TeacherAbcControlador(TeacherUI_ABC teacherUI) {
         this.teacherUI = teacherUI;
@@ -60,11 +59,12 @@ public class TeacherAbcControlador {
     }
     
     public void insertData() {
-        loadTeacherDao();
+        TeacherDao teacherDao = loadTeacherDao();
+        TeacherDaoImpl x = new TeacherDaoImpl(teacherDao);
     }
     
-    private void loadTeacherDao(){
-        teacherDao = new TeacherDao();
+    private TeacherDao loadTeacherDao(){
+        TeacherDao teacherDao = new TeacherDao();
         teacherDao.setAddress(teacherUI.getjTextAddress().getText());
         teacherDao.setCedula(teacherUI.getjTextCedula().getText());
         teacherDao.setCurp(teacherUI.getjTextCurp().getText());
@@ -82,5 +82,6 @@ public class TeacherAbcControlador {
         teacherDao.setStartDate(ConvertDate.toSqlDate(teacherUI.getjDateStart().getDate()));
         teacherDao.setStatus(teacherUI.getjComboBoxStatus().getSelectedIndex());
         teacherDao.setWorkEmail(teacherUI.getjTextEmailWork().getText());
+        return teacherDao;
     } 
 }
