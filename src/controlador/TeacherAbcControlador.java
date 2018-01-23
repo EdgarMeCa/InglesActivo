@@ -55,12 +55,14 @@ public class TeacherAbcControlador {
         teacherUI.getjComboBoxStatus().setSelectedIndex(0);
         teacherUI.getjDateStart().setDate(null);
         teacherUI.getjDateEnd().setDate(null);
+        teacherUI.getjTextPassword().setText(null);
         erasePicture();
     }
     
     public void insertData() {
         TeacherDao teacherDao = loadTeacherDao();
-        TeacherDaoImpl x = new TeacherDaoImpl(teacherDao);
+        TeacherDaoImpl impl = new TeacherDaoImpl(teacherDao);
+        impl.insert();
     }
     
     private TeacherDao loadTeacherDao(){

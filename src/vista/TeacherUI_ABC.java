@@ -503,20 +503,10 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         if (this.jTextPhoneHome.getText().length() == 20) {
             evt.consume();
         }
-        char digit = evt.getKeyChar();
-        if (digit < '0' || digit > '9' || digit != '+' || digit != '-') {
-            getToolkit().beep();
-            evt.consume();
-        }
     }//GEN-LAST:event_jTextPhoneHomeKeyTyped
 
     private void jTextPhonePersonalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPhonePersonalKeyTyped
         if (this.jTextPhonePersonal.getText().length() == 20) {
-            evt.consume();
-        }
-        char digit = evt.getKeyChar();
-        if (digit < '0' || digit > '9' || digit != '+' || digit != '-') {
-            getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_jTextPhonePersonalKeyTyped
