@@ -21,6 +21,10 @@ public class TeacherDaoImpl implements Crud {
     private static final Logger LOGGER = null;
     private TeacherDao teacherDao = null;
 
+    public TeacherDaoImpl() {
+        
+    }
+
     public TeacherDaoImpl(TeacherDao teacherDao) {
         this.teacherDao = teacherDao;
     }

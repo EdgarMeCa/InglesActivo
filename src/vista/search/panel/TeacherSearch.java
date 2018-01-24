@@ -5,12 +5,17 @@
  */
 package vista.search.panel;
 
+import controlador.search.TeacherSearchControlador;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author emedina
  */
 public class TeacherSearch extends javax.swing.JPanel {
-
+    private TeacherSearchControlador controlador = new TeacherSearchControlador(this);
     /**
      * Creates new form TeacherSearch
      */
@@ -27,20 +32,24 @@ public class TeacherSearch extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jTextName = new javax.swing.JTextField();
+        jTextLastname1 = new javax.swing.JTextField();
+        jTextLastname2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jTableResult = new javax.swing.JTable();
+        jButtonSearch = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jRadioButtonPay = new javax.swing.JRadioButton();
+        jRadioButtonEdit = new javax.swing.JRadioButton();
+        jButtonClear = new javax.swing.JButton();
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextLastname1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextLastname1ActionPerformed(evt);
             }
         });
 
@@ -50,7 +59,7 @@ public class TeacherSearch extends javax.swing.JPanel {
 
         jLabel3.setText("Apellido Materno");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableResult.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,9 +70,22 @@ public class TeacherSearch extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableResult);
 
-        jButton1.setText("Buscar");
+        jButtonSearch.setText("Buscar");
+
+        buttonGroup1.add(jRadioButtonPay);
+        jRadioButtonPay.setText("Pagos");
+
+        buttonGroup1.add(jRadioButtonEdit);
+        jRadioButtonEdit.setText("Editar");
+
+        jButtonClear.setText("Limpiar");
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,38 +98,47 @@ public class TeacherSearch extends javax.swing.JPanel {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 606, Short.MAX_VALUE)))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextLastname1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextLastname2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 606, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButtonEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButtonPay)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSearch)
+                    .addComponent(jRadioButtonPay)
+                    .addComponent(jRadioButtonEdit)
+                    .addComponent(jButtonClear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLastname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextLastname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
@@ -115,21 +146,77 @@ public class TeacherSearch extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextLastname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextLastname1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextLastname1ActionPerformed
+
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        controlador.clear();
+    }//GEN-LAST:event_jButtonClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JRadioButton jRadioButtonEdit;
+    private javax.swing.JRadioButton jRadioButtonPay;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable jTableResult;
+    private javax.swing.JTextField jTextLastname1;
+    private javax.swing.JTextField jTextLastname2;
+    private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
+
+    public JRadioButton getjRadioButtonEdit() {
+        return jRadioButtonEdit;
+    }
+
+    public void setjRadioButtonEdit(JRadioButton jRadioButtonEdit) {
+        this.jRadioButtonEdit = jRadioButtonEdit;
+    }
+
+    public JRadioButton getjRadioButtonPay() {
+        return jRadioButtonPay;
+    }
+
+    public void setjRadioButtonPay(JRadioButton jRadioButtonPay) {
+        this.jRadioButtonPay = jRadioButtonPay;
+    }
+
+    public JTable getjTableResult() {
+        return jTableResult;
+    }
+
+    public void setjTableResult(JTable jTableResult) {
+        this.jTableResult = jTableResult;
+    }
+
+    public JTextField getjTextLastname1() {
+        return jTextLastname1;
+    }
+
+    public void setjTextLastname1(JTextField jTextLastname1) {
+        this.jTextLastname1 = jTextLastname1;
+    }
+
+    public JTextField getjTextLastname2() {
+        return jTextLastname2;
+    }
+
+    public void setjTextLastname2(JTextField jTextLastname2) {
+        this.jTextLastname2 = jTextLastname2;
+    }
+
+    public JTextField getjTextName() {
+        return jTextName;
+    }
+
+    public void setjTextName(JTextField jTextName) {
+        this.jTextName = jTextName;
+    }
 }
