@@ -5,8 +5,6 @@
  */
 package controlador;
 
-import controlador.interfaces.FieldValuable;
-import javax.swing.text.JTextComponent;
 import javax.swing.JOptionPane;
 import vista.LoginUI;
 import vista.TeacherUI_ABC;

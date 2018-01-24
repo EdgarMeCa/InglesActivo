@@ -43,10 +43,9 @@ public class SearchFilter {
     
     private boolean filter4String(String value, String criteria) {
         boolean result = true;
-        if (value.equals(criteria)) {
+        if (value.toLowerCase().equals(criteria.toLowerCase())) {
             result = false;
         }
         return result;
     }
-   
 }
