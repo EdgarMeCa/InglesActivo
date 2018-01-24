@@ -50,6 +50,8 @@ public class TeacherSearchControlador {
         for(int i = 0; i < list.size();i++) {
             this.teacherSearh.getjTableResult().setValueAt(list.get(i).getName() + " " + list.get(i).getFirstLastName(), i, 0);
             this.teacherSearh.getjTableResult().setValueAt(list.get(i).getPersonalPhone(), i, 1);
+            this.teacherSearh.getjTableResult().setValueAt(list.get(i).getWorkEmail(),i, 2);
+            this.teacherSearh.getjTableResult().setValueAt(list.get(i).getAddress(), i, 3);
         }
     }
     
