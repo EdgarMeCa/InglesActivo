@@ -35,6 +35,7 @@ public class TeacherSearchControlador {
         Search search = new Search();
         TeacherSearchCriteria criteria = createCriteria();
         List<TeacherDao> list = search.search4Teacher(criteria);
+        fillTable(list);
     }
     
     private TeacherSearchCriteria createCriteria() {
@@ -48,7 +49,7 @@ public class TeacherSearchControlador {
     private void fillTable(List<TeacherDao> list) {
         for(int i = 0; i < list.size();i++) {
             this.teacherSearh.getjTableResult().setValueAt(list.get(i).getName() + " " + list.get(i).getFirstLastName(), i, 0);
-            this.teacherSearh.getjTableResult().setValueAt(list.get(i).getPersonalPhone(), i, 0);
+            this.teacherSearh.getjTableResult().setValueAt(list.get(i).getPersonalPhone(), i, 1);
         }
     }
     

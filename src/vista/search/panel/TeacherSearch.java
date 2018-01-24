@@ -9,6 +9,7 @@ import controlador.search.TeacherSearchControlador;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import modelo.search.Search;
 
 /**
  *
@@ -60,6 +61,11 @@ public class TeacherSearch extends javax.swing.JPanel {
         jLabel3.setText("Apellido Materno");
 
         jButtonSearch.setText("Buscar");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButtonPay);
         jRadioButtonPay.setText("Pagos");
@@ -154,6 +160,9 @@ public class TeacherSearch extends javax.swing.JPanel {
         controlador.clear();
     }//GEN-LAST:event_jButtonClearActionPerformed
 
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+        controlador.search();
+    }//GEN-LAST:event_jButtonSearchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
