@@ -10,6 +10,8 @@ import vista.LoginUI;
 import vista.TeacherUI_ABC;
 import modelo.dao.LoginDao;
 import modelo.dao.impl.LoginDaoImpl;
+import vista.SearchFormUI;
+import vista.search.panel.SearchMode;
 /**
  *
  * @author emedina
@@ -35,7 +37,9 @@ public class LoginControlador  {
             if (loginSuccessful)
             {
                 TeacherUI_ABC teacherAbc = new TeacherUI_ABC();
-                teacherAbc.setVisible(true);
+                //teacherAbc.setVisible(true);
+                SearchFormUI x = new SearchFormUI(SearchMode.TEACHER);
+                x.setVisible(true);
                 loginUI.setVisible(false);
             }
             else

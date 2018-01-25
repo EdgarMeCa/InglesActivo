@@ -85,10 +85,11 @@ public class TeacherSearch extends javax.swing.JPanel {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Telefono", "Correo electronico", "Direccion"
             }
         ));
         jScrollPane1.setViewportView(jTableResult);

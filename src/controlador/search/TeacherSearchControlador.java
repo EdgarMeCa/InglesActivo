@@ -54,5 +54,4 @@ public class TeacherSearchControlador {
             this.teacherSearh.getjTableResult().setValueAt(list.get(i).getAddress(), i, 3);
         }
     }
-    
 }
