@@ -6,10 +6,8 @@
 package vista;
 
 import controlador.SearchUIControlador;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import vista.search.panel.SearchMode;
-import vista.search.panel.TeacherSearch;
 
 
 /**

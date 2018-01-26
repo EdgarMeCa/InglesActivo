@@ -5,7 +5,6 @@
  */
 package controlador;
 
-import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import vista.SearchFormUI;
@@ -36,5 +35,6 @@ public class SearchUIControlador {
         this.searchUI.getjPanel1().setLayout(new BoxLayout(this.searchUI.getjPanel1(),BoxLayout.X_AXIS));
         this.searchUI.getjPanel1().add(panel);
         this.searchUI.getjPanel1().setVisible(true);
+        this.searchUI.pack();
     }
 }
