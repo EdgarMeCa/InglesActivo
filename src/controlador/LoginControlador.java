@@ -10,8 +10,8 @@ import vista.LoginUI;
 import vista.TeacherUI_ABC;
 import modelo.dao.LoginDao;
 import modelo.dao.impl.LoginDaoImpl;
+import vista.PrincipalUI;
 import vista.SearchFormUI;
-import vista.search.panel.SearchMode;
 /**
  *
  * @author emedina
@@ -38,8 +38,8 @@ public class LoginControlador  {
             {
                 TeacherUI_ABC teacherAbc = new TeacherUI_ABC();
                 //teacherAbc.setVisible(true);
-                SearchFormUI x = new SearchFormUI(SearchMode.TEACHER);
-                x.setVisible(true);
+                PrincipalUI p = new PrincipalUI();
+                p.setVisible(true);
                 loginUI.setVisible(false);
             }
             else

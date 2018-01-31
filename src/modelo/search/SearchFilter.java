@@ -17,21 +17,21 @@ public class SearchFilter {
     
     public List<TeacherDao> filter4Teacher(TeacherSearchCriteria criteria) {
         List<TeacherDao> allRecords = new TeacherDaoImpl().select();
-        if(criteria.getName() != null) {
+        if(criteria.getName() != null || !criteria.getName().isEmpty()) {
             for(TeacherDao dao : allRecords) {
                 if(filter4String(dao.getName(),criteria.getName())) {
                     allRecords.remove(dao);
                 }
             }
         }
-        if(criteria.getLastname1() != null) {
+        if(criteria.getLastname1() != null || !criteria.getLastname1().isEmpty()) {
             for(TeacherDao dao : allRecords) {
                 if(filter4String(dao.getFirstLastName(),criteria.getLastname1())) {
                     allRecords.remove(dao);
                 }
             }
         }
-        if(criteria.getLastname2() != null) {
+        if(criteria.getLastname2() != null || !criteria.getLastname2().isEmpty()) {
             for(TeacherDao dao : allRecords) {
                 if(filter4String(dao.getSecondLastName(),criteria.getLastname2())) {
                     allRecords.remove(dao);
