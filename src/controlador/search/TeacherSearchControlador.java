@@ -8,7 +8,7 @@ package controlador.search;
 import java.util.List;
 import modelo.dao.TeacherDao;
 import modelo.search.Search;
-import modelo.search.TeacherSearchCriteria;
+import modelo.search.criteria.TeacherSearchCriteria;
 import vista.search.panel.TeacherSearch;
 
 /**

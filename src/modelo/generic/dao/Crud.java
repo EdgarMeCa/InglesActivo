@@ -6,9 +6,8 @@
 package modelo.generic.dao;
 
 import java.util.List;
-import modelo.dao.TeacherDao;
 
-public interface Crud {
+public interface Crud<T> {
     
     /**
      *
@@ -32,5 +31,5 @@ public interface Crud {
      *
      * @return
      */
-    public abstract List<TeacherDao> select();
+    public abstract List<T> select();
 }

@@ -19,6 +19,7 @@ public class PrincipalControlador {
 
     public PrincipalControlador(PrincipalUI principal) {
         this.principal = principal;
+        initTableResult();
     }
     
     public void menuAction(ActionMenu action) {
@@ -35,5 +36,9 @@ public class PrincipalControlador {
     private void loadForm(JFrame frame) {
         frame.setVisible(true);
         principal.setVisible(false);
+    }
+    
+    private void initTableResult() {
+        
     }
 }

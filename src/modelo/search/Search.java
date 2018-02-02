@@ -5,6 +5,7 @@
  */
 package modelo.search;
 
+import modelo.search.criteria.TeacherSearchCriteria;
 import java.util.List;
 import modelo.dao.TeacherDao;
 

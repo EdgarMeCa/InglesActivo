@@ -38,7 +38,9 @@ public class TeacherDaoImpl implements Crud {
 
     @Override
     public boolean delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String query = createQueryDelete();
+        boolean result = CrudOperation.delete(query);
+        return result;
     }
 
     @Override
@@ -50,7 +52,7 @@ public class TeacherDaoImpl implements Crud {
 
     @Override
     public List<TeacherDao> select() {
-        String query = "SELECT * FROM teacher";
+        String query = createQuerySelect();
         ResultSet result = CrudOperation.select(query);
         List<TeacherDao> list = resultSetToList(result);
         return list;
@@ -146,6 +148,27 @@ public class TeacherDaoImpl implements Crud {
         query += "Status"        + " = " + teacherDao.getStatus()         + " ";
         query += "WHERE"                                                  + " ";
         query += "idTeacher"     + " = " + teacherDao.getId();
+        return query;
+    }
+    
+    private String createQueryDelete() {
+        String query = "";
+        query += "DELETE"    + " ";
+        query += "FROM"      + " ";
+        query += "teacher"   + " ";
+        query += "WHERE"     + " ";
+        query += "idTeacher" + " ";
+        query += "="         + " ";
+        query += teacherDao.getId();
+        return query;
+    }
+    
+    private String createQuerySelect() {
+        String query = "";
+        query += "SELECT" + " ";
+        query += "*"      + " ";
+        query += "FROM"   + " ";
+        query += "teacher";
         return query;
     }
 }

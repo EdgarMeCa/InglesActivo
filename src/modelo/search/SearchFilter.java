@@ -5,6 +5,7 @@
  */
 package modelo.search;
 
+import modelo.search.criteria.TeacherSearchCriteria;
 import java.util.List;
 import modelo.dao.TeacherDao;
 import modelo.dao.impl.TeacherDaoImpl;
@@ -15,6 +16,11 @@ import modelo.dao.impl.TeacherDaoImpl;
  */
 public class SearchFilter {
     
+    /**
+     *
+     * @param criteria
+     * @return
+     */
     public List<TeacherDao> filter4Teacher(TeacherSearchCriteria criteria) {
         List<TeacherDao> allRecords = new TeacherDaoImpl().select();
         if(criteria.getName() != null || !criteria.getName().isEmpty()) {

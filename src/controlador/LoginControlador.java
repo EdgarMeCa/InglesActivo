@@ -7,11 +7,9 @@ package controlador;
 
 import javax.swing.JOptionPane;
 import vista.LoginUI;
-import vista.TeacherUI_ABC;
 import modelo.dao.LoginDao;
 import modelo.dao.impl.LoginDaoImpl;
 import vista.PrincipalUI;
-import vista.SearchFormUI;
 /**
  *
  * @author emedina
@@ -36,8 +34,6 @@ public class LoginControlador  {
             
             if (loginSuccessful)
             {
-                TeacherUI_ABC teacherAbc = new TeacherUI_ABC();
-                //teacherAbc.setVisible(true);
                 PrincipalUI p = new PrincipalUI();
                 p.setVisible(true);
                 loginUI.setVisible(false);
