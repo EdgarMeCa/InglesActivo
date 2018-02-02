@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import EnumHelper.SearchMode;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import vista.SearchFormUI;

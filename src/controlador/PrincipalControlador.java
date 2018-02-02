@@ -6,12 +6,34 @@
 package controlador;
 
 import vista.PrincipalUI;
+import EnumHelper.*;
+import javax.swing.JFrame;
+import vista.*;
 
 /**
  *
  * @author emedina
  */
 public class PrincipalControlador {
-    private PrincipalUI principal; 
+    private PrincipalUI principal;
+
+    public PrincipalControlador(PrincipalUI principal) {
+        this.principal = principal;
+    }
     
+    public void menuAction(ActionMenu action) {
+        switch(action) {
+            case NEWTEACHER :
+                loadForm(new TeacherUI_ABC());    
+                break;
+            case SEARCHTEACHER :
+                loadForm(new SearchFormUI(SearchMode.TEACHER));
+            default :
+        }
+    } 
+    
+    private void loadForm(JFrame frame) {
+        frame.setVisible(true);
+        principal.setVisible(false);
+    }
 }
