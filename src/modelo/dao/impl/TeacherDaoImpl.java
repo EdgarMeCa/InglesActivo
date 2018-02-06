@@ -62,7 +62,7 @@ public class TeacherDaoImpl implements Crud {
         List<TeacherDao> list = new ArrayList<>();
         try {
             while(result.next()) {
-                list.add(fillTeacherDao(result));
+                list.add(fillDao(result));
             }
         }
         catch (SQLException ex) {
@@ -71,7 +71,7 @@ public class TeacherDaoImpl implements Crud {
         return list;
     }
     
-    private TeacherDao fillTeacherDao(ResultSet element) throws SQLException {
+    private TeacherDao fillDao(ResultSet element) throws SQLException {
         TeacherDao object = new TeacherDao();
         object.setId(element.getInt(null));
         object.setName(element.getString(null));

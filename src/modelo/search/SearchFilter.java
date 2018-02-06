@@ -7,8 +7,8 @@ package modelo.search;
 
 import modelo.search.criteria.TeacherSearchCriteria;
 import java.util.List;
-import modelo.dao.TeacherDao;
-import modelo.dao.impl.TeacherDaoImpl;
+import modelo.dao.*;
+import modelo.dao.impl.*;
 
 /**
  *
@@ -47,11 +47,23 @@ public class SearchFilter {
         return allRecords;
     }
     
+    public List<LatePaymentDao> filter4LatePayment() {
+         List<LatePaymentDao> allRecords = new LatePaymentImpl().select();
+         for(LatePaymentDao dao : allRecords) {
+             
+         }
+         return allRecords;
+    }
+    
     private boolean filter4String(String value, String criteria) {
         boolean result = true;
-        if (value.toLowerCase().equals(criteria.toLowerCase())) {
+        if (value.equalsIgnoreCase(criteria)) {
             result = false;
         }
         return result;
+    }
+    
+    private boolean filter4Date() {
+        return true;
     }
 }

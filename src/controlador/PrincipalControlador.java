@@ -7,7 +7,11 @@ package controlador;
 
 import vista.PrincipalUI;
 import EnumHelper.*;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.table.TableModel;
+import modelo.dao.LatePaymentDao;
+import modelo.search.Search;
 import vista.*;
 
 /**
@@ -19,7 +23,7 @@ public class PrincipalControlador {
 
     public PrincipalControlador(PrincipalUI principal) {
         this.principal = principal;
-        initTableResult();
+        //initTableResult();
     }
     
     public void menuAction(ActionMenu action) {
@@ -39,6 +43,15 @@ public class PrincipalControlador {
     }
     
     private void initTableResult() {
-        
+        Search search = new Search();
+        TableModel table = principal.getjTableLatePayment().getModel();
+        List<LatePaymentDao> searchResult = search.search4LatePayment();
+        for(int i = 0; i < searchResult.size(); i++) {
+            table.setValueAt(searchResult.get(i).getName(), i, 0);
+            table.setValueAt(searchResult.get(i).getLastname1(),i,1);
+            table.setValueAt(searchResult.get(i).getLastname2(), i, 2);
+            table.setValueAt(searchResult.get(i).getSchedule(), i, 3);
+            table.setValueAt(searchResult.get(i).getCreateTime(), i, 4);
+        }
     }
 }

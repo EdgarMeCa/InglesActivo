@@ -7,6 +7,7 @@ package vista;
 
 import EnumHelper.ActionMenu;
 import controlador.PrincipalControlador;
+import javax.swing.JTable;
 
 /**
  *
@@ -165,4 +166,12 @@ public class PrincipalUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLatePayment;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getjTableLatePayment() {
+        return jTableLatePayment;
+    }
+
+    public void setjTableLatePayment(JTable jTableLatePayment) {
+        this.jTableLatePayment = jTableLatePayment;
+    }
 }

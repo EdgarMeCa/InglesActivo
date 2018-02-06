@@ -7,7 +7,8 @@ package modelo.search;
 
 import modelo.search.criteria.TeacherSearchCriteria;
 import java.util.List;
-import modelo.dao.TeacherDao;
+import modelo.dao.*;
+import modelo.dao.impl.LatePaymentImpl;
 
 /**
  *
@@ -15,6 +16,10 @@ import modelo.dao.TeacherDao;
  */
 public class Search {
     private SearchFilter filter = new SearchFilter();
+    
+    public List<LatePaymentDao> search4LatePayment() {
+        return filter.filter4LatePayment();
+    }
     
     public List<TeacherDao> search4Teacher(TeacherSearchCriteria criteria) {
         return filter.filter4Teacher(criteria);
