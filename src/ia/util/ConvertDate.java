@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ia.util;
-import java.util.Date;
 
 /**
  *
@@ -16,12 +15,11 @@ public class ConvertDate {
         
     }
     
-    public static java.sql.Date toSqlDate(Date date) {
+    public static java.sql.Date toSqlDate(java.util.Date date) {
         java.sql.Date sqlDate = null;
         if (date != null) {
             sqlDate = new java.sql.Date(date.getTime());
         }
         return sqlDate;
     }
-    
 }
