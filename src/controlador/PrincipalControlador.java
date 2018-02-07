@@ -5,13 +5,15 @@
  */
 package controlador;
 
+import enums.helper.ActionMenu;
+import enums.helper.SearchMode;
 import vista.PrincipalUI;
-import EnumHelper.*;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.TableModel;
 import modelo.dao.LatePaymentDao;
 import modelo.search.Search;
+import modelo.search.criteria.LatePaymentSearchCriteria;
 import vista.*;
 
 /**
@@ -45,7 +47,7 @@ public class PrincipalControlador {
     private void initTableResult() {
         Search search = new Search();
         TableModel table = principal.getjTableLatePayment().getModel();
-        List<LatePaymentDao> searchResult = search.search4LatePayment();
+        List<LatePaymentDao> searchResult = search.search4LatePayment(new LatePaymentSearchCriteria(false));
         for(int i = 0; i < searchResult.size(); i++) {
             table.setValueAt(searchResult.get(i).getName(), i, 0);
             table.setValueAt(searchResult.get(i).getLastname1(),i,1);

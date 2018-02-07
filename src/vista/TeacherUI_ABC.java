@@ -13,13 +13,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import controlador.TeacherAbcControlador;
+import enums.helper.EntryPoint;
+import javax.swing.JButton;
 /**
  *
  * @author emedina
  */
 public class TeacherUI_ABC extends javax.swing.JFrame {
     private TeacherDao teacherDao;
-    private TeacherAbcControlador controlador = new TeacherAbcControlador(this);
+    private TeacherAbcControlador controlador;
     
     /**
      * Creates new form TeacherABC with a new teacherDao
@@ -28,6 +30,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         teacherDao = new TeacherDao();
+        controlador = new TeacherAbcControlador(this,EntryPoint.NEW);
         initValues();
     }
     
@@ -39,6 +42,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.teacherDao = teacherDao;
+        controlador = new TeacherAbcControlador(this,EntryPoint.SEARCH);
         initValues();
     }
 
@@ -97,7 +101,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemPrincipal = new javax.swing.JMenuItem();
-        jMenuItemClose = new javax.swing.JMenuItem();
+        jMenuItemSearch = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -264,10 +268,15 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         jMenu1.setText("Opciones");
 
         jMenuItemPrincipal.setText("Principal");
+        jMenuItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPrincipalActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemPrincipal);
 
-        jMenuItemClose.setText("Salir");
-        jMenu1.add(jMenuItemClose);
+        jMenuItemSearch.setText("Buscar");
+        jMenu1.add(jMenuItemSearch);
 
         jMenuBar1.add(jMenu1);
 
@@ -547,6 +556,10 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         controlador.insertData();
     }//GEN-LAST:event_jButtonAddActionPerformed
 
+    private void jMenuItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrincipalActionPerformed
+        controlador.returnToPrincpal();
+    }//GEN-LAST:event_jMenuItemPrincipalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -612,8 +625,8 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JMenuItem jMenuItemPrincipal;
+    private javax.swing.JMenuItem jMenuItemSearch;
     private javax.swing.JPanel jPanelPicture;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -814,4 +827,29 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
     public void setPath(String path) {
         this.path = path;
     }
+
+    public JButton getjButtonAdd() {
+        return jButtonAdd;
+    }
+
+    public void setjButtonAdd(JButton jButtonAdd) {
+        this.jButtonAdd = jButtonAdd;
+    }
+
+    public JButton getjButtonDelete() {
+        return jButtonDelete;
+    }
+
+    public void setjButtonDelete(JButton jButtonDelete) {
+        this.jButtonDelete = jButtonDelete;
+    }
+
+    public JButton getjButtonUpdate() {
+        return jButtonUpdate;
+    }
+
+    public void setjButtonUpdate(JButton jButtonUpdate) {
+        this.jButtonUpdate = jButtonUpdate;
+    }
+    
 }

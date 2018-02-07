@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import modelo.dao.TeacherDao;
 import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
+import enums.helper.EntryPoint;
+import vista.PrincipalUI;
 
 /**
  *
@@ -19,9 +21,12 @@ import modelo.dao.impl.TeacherDaoImpl;
  */
 public class TeacherAbcControlador {
     private TeacherUI_ABC teacherUI;
+    private ViewValidate viewValidate;
     
-    public TeacherAbcControlador(TeacherUI_ABC teacherUI) {
+    public TeacherAbcControlador(TeacherUI_ABC teacherUI, EntryPoint entry) {
         this.teacherUI = teacherUI;
+        this.viewValidate = new ViewValidate(teacherUI,entry);
+        this.viewValidate.disbleActionButton();
     }
     
     public void loadPicture() {
@@ -65,6 +70,12 @@ public class TeacherAbcControlador {
         impl.insert();
     }
     
+    public void returnToPrincpal() {
+        PrincipalUI principal = new PrincipalUI();
+        principal.setVisible(true);
+        this.teacherUI.setVisible(false);
+    }
+    
     private TeacherDao loadTeacherDao(){
         TeacherDao teacherDao = new TeacherDao();
         teacherDao.setAddress(teacherUI.getjTextAddress().getText());
@@ -85,5 +96,61 @@ public class TeacherAbcControlador {
         teacherDao.setStatus(teacherUI.getjComboBoxStatus().getSelectedIndex());
         teacherDao.setWorkEmail(teacherUI.getjTextEmailWork().getText());
         return teacherDao;
-    } 
+    }
+    
+    private void fillStatusCombo() {
+        
+    }
+    
+    private class ViewValidate {
+        private TeacherUI_ABC teacherUI;
+        private EntryPoint entryPoint;
+        
+        public ViewValidate(TeacherUI_ABC teacherUI,EntryPoint entry) {
+            this.teacherUI = teacherUI;
+            this.entryPoint = entry;
+        }
+        
+        public void disbleActionButton() {
+            if(entryPoint == EntryPoint.NEW) {
+                this.teacherUI.getjButtonDelete().setEnabled(false);
+                this.teacherUI.getjButtonUpdate().setEnabled(false);
+            }
+            if(entryPoint == EntryPoint.SEARCH) {
+                this.teacherUI.getjButtonAdd().setEnabled(false);
+            }
+        }
+        
+        public void validateRequiredFiels() {
+            String message = "";
+            if (teacherUI.getjTextName().getText().isEmpty()) {
+                message += "Error: El campo Nombre no puede estar vacio";
+            }
+            if (teacherUI.getjTextLastName1().getText().isEmpty()) {
+                message += "Error: El campo Apellido paterno no puede estar vacio";
+            }
+            if (teacherUI.getjTextLastName2().getText().isEmpty()) {
+                message += "Error: El campo Apellido materno no puede estar vacio";
+            }
+            if (teacherUI.getjTextAddress().getText().isEmpty()) {
+                message += "Error: El campo Direccion no puede estar vacio";
+            }
+            if (teacherUI.getjTextPhonePersonal().getText().isEmpty()) {
+                message += "Error: El campo Telefono celular no puede estar vacio";
+            }
+            if (teacherUI.getjTextEmailWork().getText().isEmpty()) {
+                message += "Error: El campo Email laboral no puede estar vacio";
+            }
+            if (teacherUI.getjTextPassword().getText().isEmpty()) {
+                message += "Error: El campo Contraseña no puede estar vacio";
+            }
+            if (teacherUI.getjDateStart().getDate() == null) {
+                message += "Error: El campo Fecha Ingreso no puede estar vacio";
+            }
+            TeacherDao x = (TeacherDao)teacherUI.getjComboBoxStatus().getSelectedItem();
+            if (x.getStatus() == 0) {
+                message += "Error: El campo Estatus no puede estar vacio";
+            }
+        }
+    }
 }

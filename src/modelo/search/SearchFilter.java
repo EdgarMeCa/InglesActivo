@@ -6,7 +6,7 @@
 package modelo.search;
 
 import java.util.Calendar;
-import modelo.search.criteria.TeacherSearchCriteria;
+import modelo.search.criteria.*;
 import java.util.List;
 import modelo.dao.*;
 import modelo.dao.impl.*;
@@ -49,12 +49,14 @@ public class SearchFilter {
         return allRecords;
     }
     
-    public List<LatePaymentDao> filter4LatePayment() {
+    public List<LatePaymentDao> filter4LatePayment(LatePaymentSearchCriteria criteria) {
          List<LatePaymentDao> allRecords = new LatePaymentImpl().select();
-         for(LatePaymentDao dao : allRecords) {
-             if(filter4DeadlineToPay(dao.getCreateTime())) {
-                allRecords.remove(dao);
-             }
+         if (criteria == null) {
+             for(LatePaymentDao dao : allRecords) {
+                if(filter4DeadlineToPay(dao.getCreateTime())) {
+                    allRecords.remove(dao);
+                }
+            }
          }
          return allRecords;
     }
@@ -69,14 +71,14 @@ public class SearchFilter {
     
     private boolean filter4DeadlineToPay(Date date) {
         boolean result = true;
-        Date limitToPay = deadlineToPay();
+        Date limitToPay = generateDeadlineToPay();
         if(date.after(limitToPay)) {
             result = false;
         }
         return result;
     }
     
-    private Date deadlineToPay() {
+    private Date generateDeadlineToPay() {
         Calendar calendar = Calendar.getInstance();
         Date date = new Date();
         calendar.setTime(date);

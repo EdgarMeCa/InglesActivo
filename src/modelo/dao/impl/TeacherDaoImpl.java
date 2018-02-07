@@ -7,7 +7,6 @@ package modelo.dao.impl;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.logging.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.generic.dao.Crud;
@@ -18,8 +17,7 @@ import modelo.dao.TeacherDao;
  * @author ASUS
  */
 public class TeacherDaoImpl implements Crud {
-    private static final Logger LOGGER = null;
-    private TeacherDao teacherDao = null;
+    private TeacherDao teacherDao;
 
     public TeacherDaoImpl() {
         
@@ -101,7 +99,7 @@ public class TeacherDaoImpl implements Crud {
         query += "teacher"     + " ";
         query += "VALUES"      + " ";
         query += "("           + " ";
-        query += "null"        + ",";
+        query += "null"                                     + ",";
         query += "'" + teacherDao.getName()           + "'" + ",";
         query += "'" + teacherDao.getFirstLastName()  + "'" + ",";
         query += "'" + teacherDao.getSecondLastName() + "'" + ",";

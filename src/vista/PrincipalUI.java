@@ -5,7 +5,7 @@
  */
 package vista;
 
-import EnumHelper.ActionMenu;
+import enums.helper.ActionMenu;
 import controlador.PrincipalControlador;
 import javax.swing.JTable;
 
@@ -14,12 +14,13 @@ import javax.swing.JTable;
  * @author emedina
  */
 public class PrincipalUI extends javax.swing.JFrame {
-    PrincipalControlador controlador = new PrincipalControlador(this);
+    PrincipalControlador controlador;
     /**
      * Creates new form PrincipalUI
      */
     public PrincipalUI() {
         initComponents();
+        controlador = new PrincipalControlador(this);
     }
     
     /**
