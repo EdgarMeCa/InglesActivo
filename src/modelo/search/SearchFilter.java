@@ -51,7 +51,7 @@ public class SearchFilter {
     
     public List<LatePaymentDao> filter4LatePayment(LatePaymentSearchCriteria criteria) {
          List<LatePaymentDao> allRecords = new LatePaymentImpl().select();
-         if (criteria == null) {
+         if (criteria.isEmpty()) {
              for(LatePaymentDao dao : allRecords) {
                 if(filter4DeadlineToPay(dao.getCreateTime())) {
                     allRecords.remove(dao);

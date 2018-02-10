@@ -69,4 +69,13 @@ public class LatePaymentDao {
     public void setCreateTime(java.sql.Date createTime) {
         this.createTime = createTime;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public Object[] toArray() {
+        Object[] array = {this.name,this.lastname1,this.lastname2,this.schedule,this.createTime};
+        return array;
+    }
 }

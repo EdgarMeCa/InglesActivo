@@ -13,13 +13,15 @@ import modelo.dao.TeacherDao;
 import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
 import enums.helper.EntryPoint;
+import ia.rules.preupdate.BeforeCommit;
+import modelo.dao.StatusDao;
 import vista.PrincipalUI;
 
 /**
  *
  * @author emedina
  */
-public class TeacherAbcControlador {
+public class TeacherAbcControlador implements BeforeCommit{
     private TeacherUI_ABC teacherUI;
     private ViewValidate viewValidate;
     
@@ -101,6 +103,15 @@ public class TeacherAbcControlador {
     private void fillStatusCombo() {
         
     }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public boolean beforeCommitData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private class ViewValidate {
         private TeacherUI_ABC teacherUI;
@@ -147,8 +158,8 @@ public class TeacherAbcControlador {
             if (teacherUI.getjDateStart().getDate() == null) {
                 message += "Error: El campo Fecha Ingreso no puede estar vacio";
             }
-            TeacherDao x = (TeacherDao)teacherUI.getjComboBoxStatus().getSelectedItem();
-            if (x.getStatus() == 0) {
+            StatusDao x = (StatusDao)teacherUI.getjComboBoxStatus().getSelectedItem();
+            if (x.getCode().equalsIgnoreCase("vacio")) {
                 message += "Error: El campo Estatus no puede estar vacio";
             }
         }

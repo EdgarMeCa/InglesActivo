@@ -7,10 +7,11 @@ package controlador;
 
 import enums.helper.ActionMenu;
 import enums.helper.SearchMode;
+import java.util.Date;
 import vista.PrincipalUI;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
 import modelo.dao.LatePaymentDao;
 import modelo.search.Search;
 import modelo.search.criteria.LatePaymentSearchCriteria;
@@ -25,7 +26,7 @@ public class PrincipalControlador {
 
     public PrincipalControlador(PrincipalUI principal) {
         this.principal = principal;
-        //initTableResult();
+        initTableResult();
     }
     
     public void menuAction(ActionMenu action) {
@@ -46,14 +47,19 @@ public class PrincipalControlador {
     
     private void initTableResult() {
         Search search = new Search();
-        TableModel table = principal.getjTableLatePayment().getModel();
-        List<LatePaymentDao> searchResult = search.search4LatePayment(new LatePaymentSearchCriteria(false));
-        for(int i = 0; i < searchResult.size(); i++) {
-            table.setValueAt(searchResult.get(i).getName(), i, 0);
-            table.setValueAt(searchResult.get(i).getLastname1(),i,1);
-            table.setValueAt(searchResult.get(i).getLastname2(), i, 2);
-            table.setValueAt(searchResult.get(i).getSchedule(), i, 3);
-            table.setValueAt(searchResult.get(i).getCreateTime(), i, 4);
+        LatePaymentSearchCriteria criteria = new LatePaymentSearchCriteria();
+        //List<LatePaymentDao> searchResult = search.search4LatePayment(criteria);
+        DefaultTableModel model = createTableModel();
+        Object[] x = {"test","x","x","x",new Date()};
+        for(int i = 0; i < /*searchResult.size()*/43; i++) {
+            model.addRow(x);
         }
+        principal.getjTableLatePayment().setModel(model);
+    }
+    
+    private DefaultTableModel createTableModel() {
+        String[] columsName = {"Nombre","Apellido Paterno","Apellido Materno","Horario","Fecha de Inicio"};
+        DefaultTableModel defaultModel = new DefaultTableModel(null,columsName);
+        return defaultModel;
     }
 }

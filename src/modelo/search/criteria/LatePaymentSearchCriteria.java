@@ -12,17 +12,11 @@ package modelo.search.criteria;
 public class LatePaymentSearchCriteria {
     private boolean empty;
 
-    public LatePaymentSearchCriteria(boolean empty) {
-        this.empty = empty;
+    public LatePaymentSearchCriteria() {
+        this.empty = true;
     }
 
     public boolean isEmpty() {
         return empty;
     }
-
-    public void setEmpty(boolean empty) {
-        this.empty = empty;
-    }
-
-
 }
