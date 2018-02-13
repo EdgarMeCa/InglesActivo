@@ -14,7 +14,12 @@ import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
 import enums.helper.EntryPoint;
 import ia.rules.preupdate.BeforeCommit;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import modelo.dao.LevelDao;
 import modelo.dao.StatusDao;
+import modelo.dao.impl.LevelDaoImpl;
+import modelo.dao.impl.StatusDaoImpl;
 import vista.PrincipalUI;
 
 /**
@@ -25,12 +30,20 @@ public class TeacherAbcControlador implements BeforeCommit{
     private TeacherUI_ABC teacherUI;
     private ViewValidate viewValidate;
     
+    /**
+     *
+     * @param teacherUI
+     * @param entry
+     */
     public TeacherAbcControlador(TeacherUI_ABC teacherUI, EntryPoint entry) {
         this.teacherUI = teacherUI;
         this.viewValidate = new ViewValidate(teacherUI,entry);
         this.viewValidate.disbleActionButton();
     }
     
+    /**
+     *
+     */
     public void loadPicture() {
         FileChooser chooser = new FileChooser();
         JPanel panelPicture = teacherUI.getjPanelPicture();
@@ -40,12 +53,18 @@ public class TeacherAbcControlador implements BeforeCommit{
         panelPicture.repaint();
     }
     
+    /**
+     * Delete the picture in the panel
+     */
     public void erasePicture() {
         JPanel panelPicture = teacherUI.getjPanelPicture();
         panelPicture.removeAll();
         panelPicture.repaint();
     }
     
+    /**
+     * Clear all the information in the components from the screen
+     */
     public void clear() {
         teacherUI.getjTextName().setText(null);
         teacherUI.getjTextLastName1().setText(null);
@@ -66,16 +85,31 @@ public class TeacherAbcControlador implements BeforeCommit{
         erasePicture();
     }
     
+    /**
+     * Insert the information from the screen into the database
+     */
     public void insertData() {
         TeacherDao teacherDao = loadTeacherDao();
         TeacherDaoImpl impl = new TeacherDaoImpl(teacherDao);
         impl.insert();
     }
     
+    /**
+     * Return to the principal screen 
+     */
     public void returnToPrincpal() {
         PrincipalUI principal = new PrincipalUI();
         principal.setVisible(true);
         this.teacherUI.setVisible(false);
+    }
+    
+     /**
+     *
+     * @return boolean
+     */
+    @Override
+    public boolean beforeCommitData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     private TeacherDao loadTeacherDao(){
@@ -101,17 +135,23 @@ public class TeacherAbcControlador implements BeforeCommit{
     }
     
     private void fillStatusCombo() {
-        
+        List<StatusDao> resultList = new StatusDaoImpl().select();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        for (StatusDao dao : resultList) {
+            model.addElement(dao);
+        }
+        teacherUI.getjComboBoxStatus().setModel(model);
+    }
+    
+    private void fillLevelCombo() {
+        List<LevelDao> resultList = new LevelDaoImpl().select();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        for (LevelDao dao : resultList) {
+            model.addElement(dao);
+        }
+        teacherUI.getjComboBoxLevel().setModel(model);
     }
 
-    /**
-     *
-     * @return
-     */
-    @Override
-    public boolean beforeCommitData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     private class ViewValidate {
         private TeacherUI_ABC teacherUI;
@@ -132,35 +172,34 @@ public class TeacherAbcControlador implements BeforeCommit{
             }
         }
         
+        /**
+        *
+        */
         public void validateRequiredFiels() {
             String message = "";
             if (teacherUI.getjTextName().getText().isEmpty()) {
-                message += "Error: El campo Nombre no puede estar vacio";
+                message += "Error: El campo Nombre no puede estar vacio \n";
             }
             if (teacherUI.getjTextLastName1().getText().isEmpty()) {
-                message += "Error: El campo Apellido paterno no puede estar vacio";
+                message += "Error: El campo Apellido paterno no puede estar vacio \n";
             }
             if (teacherUI.getjTextLastName2().getText().isEmpty()) {
-                message += "Error: El campo Apellido materno no puede estar vacio";
+                message += "Error: El campo Apellido materno no puede estar vacio \n";
             }
             if (teacherUI.getjTextAddress().getText().isEmpty()) {
-                message += "Error: El campo Direccion no puede estar vacio";
+                message += "Error: El campo Direccion no puede estar vacio \n";
             }
             if (teacherUI.getjTextPhonePersonal().getText().isEmpty()) {
-                message += "Error: El campo Telefono celular no puede estar vacio";
+                message += "Error: El campo Telefono celular no puede estar vacio \n";
             }
             if (teacherUI.getjTextEmailWork().getText().isEmpty()) {
-                message += "Error: El campo Email laboral no puede estar vacio";
+                message += "Error: El campo Email laboral no puede estar vacio \n";
             }
             if (teacherUI.getjTextPassword().getText().isEmpty()) {
-                message += "Error: El campo Contraseña no puede estar vacio";
+                message += "Error: El campo Contraseña no puede estar vacio \n";
             }
             if (teacherUI.getjDateStart().getDate() == null) {
-                message += "Error: El campo Fecha Ingreso no puede estar vacio";
-            }
-            StatusDao x = (StatusDao)teacherUI.getjComboBoxStatus().getSelectedItem();
-            if (x.getCode().equalsIgnoreCase("vacio")) {
-                message += "Error: El campo Estatus no puede estar vacio";
+                message += "Error: El campo Fecha Ingreso no puede estar vacio \n";
             }
         }
     }

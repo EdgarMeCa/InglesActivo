@@ -47,4 +47,34 @@ public class StatusDao {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof StatusDao)) {
+            return false;
+        }
+        StatusDao status = (StatusDao) obj;
+        if (id != status.getId()) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 13;
+        hash = (hash * 97) + this.id;
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        return code;
+    }
 }

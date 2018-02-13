@@ -14,7 +14,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import controlador.TeacherAbcControlador;
 import enums.helper.EntryPoint;
+import ia.util.UI_Helper;
+import java.util.List;
 import javax.swing.JButton;
+import modelo.dao.StatusDao;
 /**
  *
  * @author emedina
@@ -203,8 +206,6 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
 
         jLabel15.setText("Estatus");
-
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
 
         jLabel16.setText("Experiencia");
 
@@ -664,7 +665,8 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         jTextAreaExperience.setText(teacherDao.getExperience());
         jDateStart.setDate(teacherDao.getStartDate());
         jDateEnd.setDate(teacherDao.getEndDate());
-        jComboBoxLevel.setSelectedIndex(teacherDao == null ? 0 : teacherDao.getLevel());
+        List<StatusDao> list = (List<StatusDao>) UI_Helper.comboBoxToList(jComboBoxLevel);
+        jComboBoxLevel.setSelectedIndex(1);
         jComboBoxStatus.setSelectedIndex(teacherDao == null ? 0 : teacherDao.getStatus());
         if(teacherDao.getPicture() == null || teacherDao.getPicture().isEmpty()) 
         {
@@ -851,5 +853,4 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
     public void setjButtonUpdate(JButton jButtonUpdate) {
         this.jButtonUpdate = jButtonUpdate;
     }
-    
 }
