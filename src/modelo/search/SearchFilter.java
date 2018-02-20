@@ -49,6 +49,11 @@ public class SearchFilter {
         return allRecords;
     }
     
+    /**
+     *
+     * @param criteria
+     * @return
+     */
     public List<LatePaymentDao> filter4LatePayment(LatePaymentSearchCriteria criteria) {
          List<LatePaymentDao> allRecords = new LatePaymentImpl().select();
          if (criteria.isEmpty()) {
