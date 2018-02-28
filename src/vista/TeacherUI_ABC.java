@@ -32,9 +32,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
     public TeacherUI_ABC() {
         initComponents();
         setLocationRelativeTo(null);
-        teacherDao = new TeacherDao();
         controlador = new TeacherAbcControlador(this,EntryPoint.NEW);
-        initValues();
     }
     
     /**
