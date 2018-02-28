@@ -21,6 +21,7 @@ import modelo.dao.StatusDao;
 import modelo.dao.impl.LevelDaoImpl;
 import modelo.dao.impl.StatusDaoImpl;
 import vista.PrincipalUI;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,11 +39,10 @@ public class TeacherAbcControlador implements BeforeCommit{
     public TeacherAbcControlador(TeacherUI_ABC teacherUI, EntryPoint entry) {
         this.teacherUI = teacherUI;
         this.viewValidate = new ViewValidate(teacherUI,entry);
-        this.viewValidate.disbleActionButton();
     }
     
     /**
-     *
+     * Load the picture into the form panel
      */
     public void loadPicture() {
         FileChooser chooser = new FileChooser();
@@ -54,7 +54,7 @@ public class TeacherAbcControlador implements BeforeCommit{
     }
     
     /**
-     * Delete the picture in the panel
+     * Delete the picture in the form panel
      */
     public void erasePicture() {
         JPanel panelPicture = teacherUI.getjPanelPicture();
@@ -109,7 +109,11 @@ public class TeacherAbcControlador implements BeforeCommit{
      */
     @Override
     public boolean beforeCommitData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean commit = true;
+        if(!viewValidate.validateRequiredFiels()) {
+            commit = false;
+        }
+        return commit;
     }
     
     private TeacherDao loadTeacherDao(){
@@ -160,9 +164,10 @@ public class TeacherAbcControlador implements BeforeCommit{
         public ViewValidate(TeacherUI_ABC teacherUI,EntryPoint entry) {
             this.teacherUI = teacherUI;
             this.entryPoint = entry;
+            disbleActionButton();
         }
         
-        public void disbleActionButton() {
+        private void disbleActionButton() {
             if(entryPoint == EntryPoint.NEW) {
                 this.teacherUI.getjButtonDelete().setEnabled(false);
                 this.teacherUI.getjButtonUpdate().setEnabled(false);
@@ -175,8 +180,9 @@ public class TeacherAbcControlador implements BeforeCommit{
         /**
         *
         */
-        public void validateRequiredFiels() {
+        public boolean validateRequiredFiels() {
             String message = "";
+            boolean isValid = true;
             if (teacherUI.getjTextName().getText().isEmpty()) {
                 message += "Error: El campo Nombre no puede estar vacio \n";
             }
@@ -201,6 +207,11 @@ public class TeacherAbcControlador implements BeforeCommit{
             if (teacherUI.getjDateStart().getDate() == null) {
                 message += "Error: El campo Fecha Ingreso no puede estar vacio \n";
             }
+            if(!message.equals("")) {
+                isValid = false;
+                JOptionPane.showMessageDialog(null, message,"Campos faltantes", JOptionPane.ERROR_MESSAGE);
+            }
+            return isValid;
         }
     }
 }

@@ -10,13 +10,19 @@ package modelo.search.criteria;
  * @author emedina
  */
 public class LatePaymentSearchCriteria {
-    private boolean empty;
 
+    /**
+     *
+     */
     public LatePaymentSearchCriteria() {
-        this.empty = true;
+        
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isEmpty() {
-        return empty;
+        return true;
     }
 }

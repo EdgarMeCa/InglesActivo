@@ -18,10 +18,18 @@ import vista.search.panel.*;
 public class SearchUIControlador {
     private SearchFormUI searchUI;
 
+    /**
+     *
+     * @param searchUI
+     */
     public SearchUIControlador(SearchFormUI searchUI) {
         this.searchUI = searchUI;
     }
     
+    /**
+     *
+     * @param mode
+     */
     public void modePanelResolver(SearchMode mode) {
         switch(mode) {
             case TEACHER :

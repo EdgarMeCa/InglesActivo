@@ -207,6 +207,8 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
 
         jLabel15.setText("Estatus");
 
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
+
         jLabel16.setText("Experiencia");
 
         jTextAreaExperience.setColumns(20);
@@ -665,9 +667,9 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         jTextAreaExperience.setText(teacherDao.getExperience());
         jDateStart.setDate(teacherDao.getStartDate());
         jDateEnd.setDate(teacherDao.getEndDate());
-        List<StatusDao> list = (List<StatusDao>) UI_Helper.comboBoxToList(jComboBoxLevel);
-        jComboBoxLevel.setSelectedIndex(1);
-        jComboBoxStatus.setSelectedIndex(teacherDao == null ? 0 : teacherDao.getStatus());
+        //List<StatusDao> list = (List<StatusDao>) UI_Helper.comboBoxToList(jComboBoxLevel);
+        jComboBoxLevel.setSelectedIndex(0);
+        jComboBoxStatus.setSelectedIndex(/*teacherDao == null ? 0 : teacherDao.getStatus()*/0);
         if(teacherDao.getPicture() == null || teacherDao.getPicture().isEmpty()) 
         {
             jPanelPicture.removeAll();

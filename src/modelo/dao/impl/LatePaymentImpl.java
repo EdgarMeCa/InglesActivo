@@ -65,7 +65,7 @@ public class LatePaymentImpl implements Crud {
         query += "WHERE"                    + " ";
         query += "sg.PaymentDetail IS NULL" + " ";
         query += "AND"                      + " ";
-        query += "e.Name = 'ACTIVO'";
+        query += "e.Code = 'ACTIVO'";
         return query;
     }
     
