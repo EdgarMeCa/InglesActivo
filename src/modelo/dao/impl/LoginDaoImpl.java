@@ -25,7 +25,7 @@ public class LoginDaoImpl implements Login{
 
     @Override
     public boolean loginUser(LoginDao object) {
-        String query = "SELECT * FROM teacher WHERE Correo = '" + object.getUsername() + "' AND Password = '" + object.getPassword() + "';";
+        String query = "SELECT * FROM teacher WHERE EmailWork = '" + object.getUsername() + "' AND Password = '" + object.getPassword() + "';";
         boolean loginSuccessful = false;
         
         try

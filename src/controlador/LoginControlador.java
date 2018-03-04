@@ -30,7 +30,7 @@ public class LoginControlador  {
             LoginDao loginDao = new LoginDao(loginUI.getjTextUsername().getText(),loginUI.getjTextPassword().getText());
             LoginDaoImpl loginDaoImpl = new LoginDaoImpl();
             
-            boolean loginSuccessful = true;//loginDaoImpl.loginUser(loginDao);
+            boolean loginSuccessful = loginDaoImpl.loginUser(loginDao);
             
             if (loginSuccessful)
             {

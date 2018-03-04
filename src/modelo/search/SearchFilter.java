@@ -5,6 +5,7 @@
  */
 package modelo.search;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import modelo.search.criteria.*;
 import java.util.List;
@@ -25,24 +26,25 @@ public class SearchFilter {
      */
     public List<TeacherDao> filter4Teacher(TeacherSearchCriteria criteria) {
         List<TeacherDao> allRecords = new TeacherDaoImpl().select();
+        List<TeacherDao> remove = new ArrayList<>();
         if(criteria.getName() != null || !criteria.getName().isEmpty()) {
             for(TeacherDao dao : allRecords) {
                 if(filter4String(dao.getName(),criteria.getName())) {
-                    allRecords.remove(dao);
+                    remove.add(dao);
                 }
             }
         }
         if(criteria.getLastname1() != null || !criteria.getLastname1().isEmpty()) {
             for(TeacherDao dao : allRecords) {
                 if(filter4String(dao.getFirstLastName(),criteria.getLastname1())) {
-                    allRecords.remove(dao);
+                    remove.add(dao);
                 }
             }
         }
         if(criteria.getLastname2() != null || !criteria.getLastname2().isEmpty()) {
             for(TeacherDao dao : allRecords) {
                 if(filter4String(dao.getSecondLastName(),criteria.getLastname2())) {
-                    allRecords.remove(dao);
+                    remove.add(dao);
                 }
             }
         }
@@ -56,13 +58,15 @@ public class SearchFilter {
      */
     public List<LatePaymentDao> filter4LatePayment(LatePaymentSearchCriteria criteria) {
          List<LatePaymentDao> allRecords = new LatePaymentImpl().select();
+         List<LatePaymentDao> remove = new ArrayList<>();
          if (criteria.isEmpty()) {
              for(LatePaymentDao dao : allRecords) {
                 if(filter4DeadlineToPay(dao.getCreateTime())) {
-                    allRecords.remove(dao);
+                    remove.add(dao);
                 }
             }
          }
+         allRecords.removeAll(remove);
          return allRecords;
     }
     

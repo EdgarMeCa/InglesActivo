@@ -47,7 +47,8 @@ public class LatePaymentImpl implements Crud {
         query += "s.Name,"                  + " ";
         query += "s.LName1,"                + " ";
         query += "s.LName2,"                + " ";
-        query += "g.Horario"                + " ";
+        query += "g.Schedule,"              + " ";
+        query += "g.StartDate"              + " ";
         query += "FROM"                     + " ";
         query += "student s"                + " ";
         query += "INNER JOIN"               + " ";
@@ -88,6 +89,7 @@ public class LatePaymentImpl implements Crud {
         object.setLastname1(element.getString(2));
         object.setLastname2(element.getString(3));
         object.setSchedule(element.getTime(4).toString());
+        object.setCreateTime(element.getDate(5));
         return object;
     }
 }

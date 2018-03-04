@@ -48,17 +48,17 @@ public class PrincipalControlador {
     private void initTableResult() {
         Search search = new Search();
         LatePaymentSearchCriteria criteria = new LatePaymentSearchCriteria();
-        //List<LatePaymentDao> searchResult = search.search4LatePayment(criteria);
+        List<LatePaymentDao> searchResult = search.search4LatePayment(criteria);
         DefaultTableModel model = createTableModel();
         Object[] x = {"test","x","x","x",new Date()};
-        for(int i = 0; i < /*searchResult.size()*/43; i++) {
-            model.addRow(x);
+        for(int i = 0; i < searchResult.size(); i++) {
+            model.addRow(searchResult.get(i).toArray());
         }
         principal.getjTableLatePayment().setModel(model);
     }
     
     private DefaultTableModel createTableModel() {
-        String[] columsName = {"Nombre","Apellido Paterno","Apellido Materno","Horario","Fecha de Inicio"};
+        String[] columsName = {"Nombre","Apellido Paterno","Apellido Materno","Horario","Fecha Inicio"};
         DefaultTableModel defaultModel = new DefaultTableModel(null,columsName);
         return defaultModel;
     }

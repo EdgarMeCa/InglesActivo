@@ -109,6 +109,7 @@ public class CrudOperation {
     }
     
     public static ResultSet select(String query) {
+        ResultSet x;
         try
         {
             connection = DBConnection.getInstance().openConnection();
@@ -121,7 +122,7 @@ public class CrudOperation {
         }
         finally
         {
-            try
+            /*try
             {
                 statement.close();
                 connection.close();
@@ -129,7 +130,7 @@ public class CrudOperation {
             catch (SQLException ex)
             {
                 ex.printStackTrace();
-            }
+            }*/
         }
         return resultSet;
     }
