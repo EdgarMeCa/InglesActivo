@@ -80,16 +80,16 @@ public class SearchFilter {
     
     private boolean filter4DeadlineToPay(Date date) {
         boolean result = true;
-        Date limitToPay = generateDeadlineToPay();
-        if(date.after(limitToPay)) {
+        Date limitToPay = generateDeadlineToPay(date);
+        Date today = new Date();
+        if(today.after(limitToPay)) {
             result = false;
         }
         return result;
     }
     
-    private Date generateDeadlineToPay() {
+    private Date generateDeadlineToPay(Date date) {
         Calendar calendar = Calendar.getInstance();
-        Date date = new Date();
         calendar.setTime(date);
         calendar.add(Calendar.DAY_OF_YEAR, 7);
         return calendar.getTime();

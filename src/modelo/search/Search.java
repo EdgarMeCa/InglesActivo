@@ -16,10 +16,20 @@ import modelo.dao.*;
 public class Search {
     private SearchFilter filter = new SearchFilter();
     
+    /**
+     *
+     * @param criteria
+     * @return
+     */
     public List<LatePaymentDao> search4LatePayment(LatePaymentSearchCriteria criteria) {
         return filter.filter4LatePayment(criteria);
     }
     
+    /**
+     *
+     * @param criteria
+     * @return
+     */
     public List<TeacherDao> search4Teacher(TeacherSearchCriteria criteria) {
         return filter.filter4Teacher(criteria);
     }

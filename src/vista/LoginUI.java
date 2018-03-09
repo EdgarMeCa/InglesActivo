@@ -20,7 +20,7 @@ public class LoginUI extends javax.swing.JFrame {
      */
     public LoginUI() {
         initComponents();
-        setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         jTextUsername.setFocusable(true);
     }
 
@@ -44,6 +44,7 @@ public class LoginUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setBackground(java.awt.Color.lightGray);
         setName("Login"); // NOI18N
         setResizable(false);
 

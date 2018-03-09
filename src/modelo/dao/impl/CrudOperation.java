@@ -109,7 +109,6 @@ public class CrudOperation {
     }
     
     public static ResultSet select(String query) {
-        ResultSet x;
         try
         {
             connection = DBConnection.getInstance().openConnection();

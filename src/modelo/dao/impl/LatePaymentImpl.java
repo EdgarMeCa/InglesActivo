@@ -6,11 +6,10 @@
 package modelo.dao.impl;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import modelo.dao.LatePaymentDao;
 import modelo.generic.dao.Crud;
+import ia.util.DatabaseUtil;
 
 /**
  *
@@ -37,7 +36,7 @@ public class LatePaymentImpl implements Crud {
     public List<LatePaymentDao> select() {
         String query = createQuerySelect();
         ResultSet result = CrudOperation.select(query);
-        List<LatePaymentDao> list = resultSetToList(result);
+        List<LatePaymentDao> list = (List<LatePaymentDao>)(Object) DatabaseUtil.resultSetToList(result, new LatePaymentDao());
         return list;
     }
     
@@ -68,28 +67,5 @@ public class LatePaymentImpl implements Crud {
         query += "AND"                      + " ";
         query += "e.Code = 'ACTIVO'";
         return query;
-    }
-    
-    private List<LatePaymentDao> resultSetToList(ResultSet result){
-        List<LatePaymentDao> list = new ArrayList<>();
-        try {
-            while(result.next()) {
-                list.add(fillDao(result));
-            }
-        }
-        catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return list;
-    }
-    
-    private LatePaymentDao fillDao (ResultSet element) throws SQLException{
-        LatePaymentDao object = new LatePaymentDao();
-        object.setName(element.getString(1));
-        object.setLastname1(element.getString(2));
-        object.setLastname2(element.getString(3));
-        object.setSchedule(element.getTime(4).toString());
-        object.setCreateTime(element.getDate(5));
-        return object;
     }
 }

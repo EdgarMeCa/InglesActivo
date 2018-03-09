@@ -6,7 +6,6 @@
 package database;
 
 import java.sql.*;
-import java.util.logging.*;
 /**
  *
  * @author ASUS
