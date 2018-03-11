@@ -5,11 +5,9 @@
  */
 package modelo.dao.impl;
 
-import java.sql.ResultSet;
 import java.util.List;
 import modelo.dao.LatePaymentDao;
 import modelo.generic.dao.Crud;
-import ia.util.DatabaseUtil;
 
 /**
  *
@@ -35,9 +33,8 @@ public class LatePaymentImpl implements Crud {
     @Override
     public List<LatePaymentDao> select() {
         String query = createQuerySelect();
-        ResultSet result = CrudOperation.select(query);
-        List<LatePaymentDao> list = (List<LatePaymentDao>)(Object) DatabaseUtil.resultSetToList(result, new LatePaymentDao());
-        return list;
+        List<LatePaymentDao> result = (List<LatePaymentDao>)(Object)CrudOperation.select(query,new LatePaymentDao());
+        return result;
     }
     
     private String createQuerySelect() {

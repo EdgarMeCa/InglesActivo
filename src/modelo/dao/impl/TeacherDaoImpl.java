@@ -51,9 +51,9 @@ public class TeacherDaoImpl implements Crud {
     @Override
     public List<TeacherDao> select() {
         String query = createQuerySelect();
-        ResultSet result = CrudOperation.select(query);
-        List<TeacherDao> list = resultSetToList(result);
-        return list;
+        //ResultSet result = CrudOperation.select(query);
+        //List<TeacherDao> list = resultSetToList(result);
+        return null;
     }
     
     private List<TeacherDao> resultSetToList(ResultSet result) {

@@ -45,9 +45,9 @@ public class GroupDaoImpl implements Crud{
     @Override
     public List<GroupDao> select() {
         String query = createQuerySelect();
-        ResultSet result = CrudOperation.select(query);
-        List<GroupDao> list = resultSetToList(result);
-        return list;
+        //ResultSet result = CrudOperation.select(query);
+        //List<GroupDao> list = resultSetToList(result);
+        return null;
     }
     
     private String createQuerySelect() {

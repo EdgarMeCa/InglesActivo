@@ -36,9 +36,9 @@ public class LevelDaoImpl implements Crud{
     @Override
     public List select() {
         String query = createQuerySelect();
-        ResultSet result = CrudOperation.select(query);
-        List<LevelDao> list = resultSetToList(result);
-        return list;
+        //ResultSet result = CrudOperation.select(query);
+        //List<LevelDao> list = resultSetToList(result);
+        return null;
     }
     
      private List<LevelDao> resultSetToList(ResultSet result) {

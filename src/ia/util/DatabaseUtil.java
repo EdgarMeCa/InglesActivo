@@ -9,7 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.dao.LatePaymentDao;
+import modelo.dao.*;
+
 
 /**
  *
@@ -47,4 +48,38 @@ public class DatabaseUtil {
         return object;
     }
     
+    private static TeacherDao fillDao (ResultSet element, TeacherDao dao) throws SQLException{
+        TeacherDao object = new TeacherDao();
+        return object;
+    }
+    
+    private static GroupDao fillDao (ResultSet element, GroupDao dao) throws SQLException{
+        GroupDao object = new GroupDao();
+        return object;
+    }
+    
+    private static LevelDao fillDao (ResultSet element, LevelDao dao) throws SQLException{
+        LevelDao object = new LevelDao();
+        return object;
+    }
+    
+    private static StatusDao fillDao (ResultSet element, StatusDao dao) throws SQLException{
+        StatusDao object = new StatusDao();
+        return object;
+    }
+    
+    private static ModuloDao fillDao (ResultSet element, ModuloDao dao) throws SQLException{
+        ModuloDao object = new ModuloDao();
+        return object;
+    }
+    
+    private static PaymentDao fillDao (ResultSet element, PaymentDao dao) throws SQLException{
+        PaymentDao object = new PaymentDao();
+        return object;
+    }
+    
+    private static StudentDao fillDao (ResultSet element, StudentDao dao) throws SQLException{
+        StudentDao object = new StudentDao();
+        return object;
+    }  
 }

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
 import database.DBConnection;
+import ia.util.DatabaseUtil;
+import java.util.List;
 
 /**
  *
@@ -108,12 +110,14 @@ public class CrudOperation {
         return result;
     }
     
-    public static ResultSet select(String query) {
+    public static List<Object> select(String query,Object type) {
+        List<Object> queryResult = null;
         try
         {
             connection = DBConnection.getInstance().openConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
+            queryResult = DatabaseUtil.resultSetToList(resultSet,type);
         }
         catch (SQLException ex)
         {
@@ -121,7 +125,7 @@ public class CrudOperation {
         }
         finally
         {
-            /*try
+            try
             {
                 statement.close();
                 connection.close();
@@ -129,8 +133,8 @@ public class CrudOperation {
             catch (SQLException ex)
             {
                 ex.printStackTrace();
-            }*/
+            }
         }
-        return resultSet;
+        return queryResult;
     }
 }

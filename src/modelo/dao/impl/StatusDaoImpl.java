@@ -45,9 +45,9 @@ public class StatusDaoImpl implements Crud {
     @Override
     public List select() {
         String query = createQuerySelect();
-        ResultSet result = CrudOperation.select(query);
-        List<StatusDao> list = resultSetToList(result);
-        return list;
+        //ResultSet result = CrudOperation.select(query);
+        //List<StatusDao> list = resultSetToList(result);
+        return null;
     }
     
     private List<StatusDao> resultSetToList(ResultSet result) {
