@@ -50,7 +50,6 @@ public class PrincipalControlador {
         LatePaymentSearchCriteria criteria = new LatePaymentSearchCriteria();
         List<LatePaymentDao> searchResult = search.search4LatePayment(criteria);
         DefaultTableModel model = createTableModel();
-        Object[] x = {"test","x","x","x",new Date()};
         for(int i = 0; i < searchResult.size(); i++) {
             model.addRow(searchResult.get(i).toArray());
         }

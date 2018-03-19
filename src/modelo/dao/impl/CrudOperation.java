@@ -110,14 +110,14 @@ public class CrudOperation {
         return result;
     }
     
-    public static List<Object> select(String query,Object type) {
+    public static List<Object> select(String query,Object daoType) {
         List<Object> queryResult = null;
         try
         {
             connection = DBConnection.getInstance().openConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            queryResult = DatabaseUtil.resultSetToList(resultSet,type);
+            queryResult = DatabaseUtil.resultSetToList(resultSet,daoType);
         }
         catch (SQLException ex)
         {

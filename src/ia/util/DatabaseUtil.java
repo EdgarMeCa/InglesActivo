@@ -18,11 +18,11 @@ import modelo.dao.*;
  */
 public class DatabaseUtil {
     
-    public static List<Object> resultSetToList(ResultSet result, Object type){
+    public static List<Object> resultSetToList(ResultSet result, Object daoType){
         List<Object> list = new ArrayList<>();
         try {
             while(result.next()) {
-                list.add(convertToDao(result,type));
+                list.add(convertToDao(result,daoType));
             }
         }
         catch (SQLException ex) {
