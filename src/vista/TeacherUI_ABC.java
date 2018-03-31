@@ -107,7 +107,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setText("Nombre");
+        jLabel1.setText("Nombre*");
 
         jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -115,7 +115,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Apellido Paterno");
+        jLabel2.setText("Apellido Paterno*");
 
         jTextLastName1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -123,7 +123,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Apellido Materno");
+        jLabel3.setText("Apellido Materno*");
 
         jTextLastName2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +136,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Direccion");
+        jLabel4.setText("Direccion*");
 
         jTextAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -158,7 +158,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
 
         jLabel5.setText("No. Telefonico");
 
-        jLabel6.setText("Telefono celular");
+        jLabel6.setText("Telefono celular*");
 
         jLabel8.setText("Email personal");
 
@@ -168,7 +168,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Email laboral");
+        jLabel9.setText("Email laboral*");
 
         jTextEmailWork.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -201,11 +201,11 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
 
         jLabel14.setText("Nivel");
 
-        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
+        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2" }));
 
         jLabel15.setText("Estatus");
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2" }));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2" }));
 
         jLabel16.setText("Experiencia");
 
@@ -213,7 +213,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
         jTextAreaExperience.setRows(5);
         jScrollPane1.setViewportView(jTextAreaExperience);
 
-        jLabel11.setText("Fecha Ingreso");
+        jLabel11.setText("Fecha Ingreso*");
 
         jLabel12.setText("Fecha Salida");
 
@@ -264,7 +264,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setText("Contraseña");
+        jLabel13.setText("Contraseña*");
 
         jDateStart.setDateFormatString("dd/MM/yyyy");
 
@@ -557,7 +557,10 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextCurpKeyTyped
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        controlador.insertData();
+        if(controlador.beforeCommitData())
+        {
+            controlador.insertData();
+        }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jMenuItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrincipalActionPerformed

@@ -69,7 +69,7 @@ public class StatusDao {
     @Override
     public int hashCode() {
         int hash = 13;
-        hash = (hash * 97) + this.id;
+        hash = (hash * 97) + this.id + code.hashCode() + description.hashCode();
         return hash;
     }
 

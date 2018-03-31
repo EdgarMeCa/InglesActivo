@@ -45,30 +45,8 @@ public class StatusDaoImpl implements Crud {
     @Override
     public List select() {
         String query = createQuerySelect();
-        //ResultSet result = CrudOperation.select(query);
-        //List<StatusDao> list = resultSetToList(result);
-        return null;
-    }
-    
-    private List<StatusDao> resultSetToList(ResultSet result) {
-        List<StatusDao> list = new ArrayList<>();
-        try {
-            while(result.next()) {
-                list.add(fillDao(result));
-            }
-        }
-        catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return list;
-    }
-    
-    private StatusDao fillDao(ResultSet element) throws SQLException {
-        StatusDao object = new StatusDao();
-        object.setId(element.getInt(null));
-        object.setCode(element.getString(null));
-        object.setDescription(element.getString(null));
-        return object;
+        List<StatusDao> result =  (List<StatusDao>)(Object)CrudOperation.select(query,new StatusDao());
+        return result;
     }
     
     private String createQuerySelect() {

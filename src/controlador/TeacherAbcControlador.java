@@ -39,6 +39,8 @@ public class TeacherAbcControlador implements BeforeCommit{
      */
     public TeacherAbcControlador(TeacherUI_ABC teacherUI, EntryPoint entry) {
         this.teacherUI = teacherUI;
+        this.fillLevelCombo();
+        this.fillStatusCombo();
         this.viewValidate = new ViewValidate(teacherUI,entry);
     }
     

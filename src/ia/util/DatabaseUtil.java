@@ -35,6 +35,12 @@ public class DatabaseUtil {
         if(dao instanceof LatePaymentDao) {
             return fillDao(result,(LatePaymentDao)dao);
         }
+        if(dao instanceof StatusDao) {
+            return fillDao(result,(StatusDao)dao);
+        }
+        if(dao instanceof LevelDao) {
+            return fillDao(result,(LevelDao)dao);
+        }
         return null;
     }
     
@@ -60,11 +66,17 @@ public class DatabaseUtil {
     
     private static LevelDao fillDao (ResultSet element, LevelDao dao) throws SQLException{
         LevelDao object = new LevelDao();
+        object.setId(element.getInt(1));
+        object.setCode(element.getString(2));
+        object.setDescription(element.getString(3));
         return object;
     }
     
     private static StatusDao fillDao (ResultSet element, StatusDao dao) throws SQLException{
         StatusDao object = new StatusDao();
+        object.setId(element.getInt(1));
+        object.setCode(element.getString(2));
+        object.setDescription(element.getString(3));
         return object;
     }
     
