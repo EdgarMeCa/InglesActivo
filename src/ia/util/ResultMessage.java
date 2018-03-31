@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class ResultMessage {
     
     public static void databaseInsertFailMessage() {
-        JOptionPane.showMessageDialog(null,"Error\n" + "Fallo al realizar el nuevo registro");
+        JOptionPane.showMessageDialog(null,"Fallo al realizar el nuevo registro","Error",JOptionPane.ERROR_MESSAGE);
     } 
     
      public static void databaseInsertSuccessMessage() {
