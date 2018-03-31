@@ -5,7 +5,7 @@
  */
 package controlador;
 
-import javax.swing.JOptionPane;
+import ia.util.ResultMessage;
 import vista.LoginUI;
 import modelo.dao.LoginDao;
 import modelo.dao.impl.LoginDaoImpl;
@@ -40,7 +40,7 @@ public class LoginControlador  {
             }
             else
             {
-                JOptionPane.showMessageDialog(loginUI, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);   
+                ResultMessage.logingFail();
             }
         }
     }

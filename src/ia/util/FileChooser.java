@@ -5,6 +5,8 @@
  */
 package ia.util;
 
+import java.awt.HeadlessException;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 /**
  *
@@ -25,13 +27,23 @@ public class FileChooser {
      * @return
      */
     public String getPath() {
-        String path = "";
-        int selected = fileChooser.showOpenDialog(null);
-        if (selected == JFileChooser.APPROVE_OPTION) {
-            path = fileChooser.getSelectedFile().getAbsolutePath();
+        String path = null;
+        try
+        {
+            int selected = fileChooser.showOpenDialog(null);
+            if (selected == JFileChooser.APPROVE_OPTION) 
+            {
+                path = fileChooser.getSelectedFile().getCanonicalPath();
+            }
+        }
+        catch (HeadlessException he)
+        {
+            he.printStackTrace();
+        }
+        catch (IOException ioe)
+        {
+            
         }
         return path;
-    }
-    
-    
+    }   
 }

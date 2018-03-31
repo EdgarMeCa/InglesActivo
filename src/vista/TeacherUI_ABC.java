@@ -266,6 +266,10 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
 
         jLabel13.setText("Contraseña");
 
+        jDateStart.setDateFormatString("dd/MM/yyyy");
+
+        jDateEnd.setDateFormatString("dd/MM/yyyy");
+
         jMenu1.setText("Opciones");
 
         jMenuItemPrincipal.setText("Principal");

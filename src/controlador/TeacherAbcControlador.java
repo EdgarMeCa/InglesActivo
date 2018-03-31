@@ -8,6 +8,7 @@ package controlador;
 import ia.util.ConvertDate;
 import ia.util.FileChooser;
 import ia.util.Picture;
+import ia.util.ResultMessage;
 import javax.swing.JPanel;
 import modelo.dao.TeacherDao;
 import vista.TeacherUI_ABC;
@@ -46,11 +47,15 @@ public class TeacherAbcControlador implements BeforeCommit{
      */
     public void loadPicture() {
         FileChooser chooser = new FileChooser();
+        if(chooser.getPath() != null)
+        {
         JPanel panelPicture = teacherUI.getjPanelPicture();
         Picture picture = new Picture(panelPicture.getWidth(),panelPicture.getHeight(),chooser.getPath());
+        teacherUI.setPath(chooser.getPath());
         panelPicture.removeAll();
         panelPicture.add(picture);
         panelPicture.repaint();
+        }
     }
     
     /**
@@ -89,9 +94,19 @@ public class TeacherAbcControlador implements BeforeCommit{
      * Insert the information from the screen into the database
      */
     public void insertData() {
+        boolean isDataUpdate;
         TeacherDao teacherDao = loadTeacherDao();
         TeacherDaoImpl impl = new TeacherDaoImpl(teacherDao);
-        impl.insert();
+        isDataUpdate = impl.insert();
+        if(isDataUpdate)
+        {
+            this.clear();
+            ResultMessage.databaseInsertSuccessMessage();
+        }
+        else 
+        {
+            ResultMessage.databaseInsertFailMessage();
+        }
     }
     
     /**

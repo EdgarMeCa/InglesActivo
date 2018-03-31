@@ -113,7 +113,14 @@ public class TeacherDaoImpl implements Crud {
         query += "'" + teacherDao.getExperience()     + "'" + ",";
         query += "'" + teacherDao.getPicture()        + "'" + ",";
         query += "'" + teacherDao.getStartDate()      + "'" + ",";
-        query += "'" + teacherDao.getEndDate()        + "'" + ",";
+        if(teacherDao.getEndDate() != null)
+        {
+            query += "'" + teacherDao.getEndDate()        + "'" + ",";
+        }
+        else 
+        {
+            query += "null" + ",";
+        }
         query += "'" + teacherDao.getAddress()        + "'" + ",";
         query += "'" + teacherDao.getLevel()          + "'" + ",";
         query += "'" + teacherDao.getStatus()         + "'";

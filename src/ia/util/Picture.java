@@ -52,7 +52,14 @@ public class Picture extends JPanel {
     private void loadImage() {
         try
         {
-            image = ImageIO.read(new File(path));
+            if(path != null)
+            {
+                image = ImageIO.read(new File(path));
+            }
+            else
+            {
+                image = null;
+            }
         }
         catch (IOException ex) 
         {
