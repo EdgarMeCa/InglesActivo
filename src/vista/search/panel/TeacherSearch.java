@@ -9,7 +9,6 @@ import controlador.search.TeacherSearchControlador;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import modelo.search.Search;
 
 /**
  *

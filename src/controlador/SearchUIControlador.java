@@ -36,7 +36,7 @@ public class SearchUIControlador {
                 loadPanel(new TeacherSearch());
                 break;
             case STUDENT :
-                loadPanel(null);
+                loadPanel(new StudentSearch());
                 break;
             default :
                 

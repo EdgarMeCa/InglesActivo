@@ -19,6 +19,12 @@ import java.util.Date;
  */
 public class SearchFilter {
     
+    public List<StudentDao> filter4Student(StudentSearchCriteria criteria) {
+        List<StudentDao> allRecords = new StudentDaoImpl().select();
+        
+        return allRecords;
+    }
+    
     /**
      *
      * @param criteria
