@@ -37,8 +37,10 @@ public class PrincipalUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuNewTeacher = new javax.swing.JMenuItem();
+        jMenuStudent = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuSeatchTeacher = new javax.swing.JMenuItem();
+        jMenuSearchStudent = new javax.swing.JMenuItem();
         jMenuLogout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,6 +68,14 @@ public class PrincipalUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuNewTeacher);
 
+        jMenuStudent.setText("Estudiante");
+        jMenuStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuStudentActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuStudent);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Buscar");
@@ -82,6 +92,9 @@ public class PrincipalUI extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuSeatchTeacher);
+
+        jMenuSearchStudent.setText("Estudiante");
+        jMenu2.add(jMenuSearchStudent);
 
         jMenuBar1.add(jMenu2);
 
@@ -121,6 +134,10 @@ public class PrincipalUI extends javax.swing.JFrame {
     private void jMenuSeatchTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSeatchTeacherActionPerformed
         controlador.menuAction(ActionMenu.SEARCHTEACHER);
     }//GEN-LAST:event_jMenuSeatchTeacherActionPerformed
+
+    private void jMenuStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuStudentActionPerformed
+        controlador.menuAction(ActionMenu.SEARCHTEACHER);
+    }//GEN-LAST:event_jMenuStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +180,9 @@ public class PrincipalUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuLogout;
     private javax.swing.JMenuItem jMenuNewTeacher;
+    private javax.swing.JMenuItem jMenuSearchStudent;
     private javax.swing.JMenuItem jMenuSeatchTeacher;
+    private javax.swing.JMenuItem jMenuStudent;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLatePayment;
     // End of variables declaration//GEN-END:variables

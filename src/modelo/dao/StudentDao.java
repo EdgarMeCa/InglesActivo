@@ -26,13 +26,13 @@ public class StudentDao {
     private String provenence;
     private Date startDate;
     private Date endDate;
-    private int level; //FK
+    private int status; //FK
 
     public StudentDao() {
         
     }
 
-    public StudentDao(int id, String name, String lastname1, String lastname2, String homePhone, String personalPhone, String address, String email, String curp, String picture, String schoolLevel, String provenence, Date startDate, Date endDate, int level) {
+    public StudentDao(int id, String name, String lastname1, String lastname2, String homePhone, String personalPhone, String address, String email, String curp, String picture, String schoolLevel, String provenence, Date startDate, Date endDate, int status) {
         this.id = id;
         this.name = name;
         this.lastname1 = lastname1;
@@ -47,7 +47,7 @@ public class StudentDao {
         this.provenence = provenence;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.level = level;
+        this.status = status;
     }
 
     public int getId() {
@@ -162,13 +162,16 @@ public class StudentDao {
         this.endDate = endDate;
     }
 
-    public int getLevel() {
-        return level;
+    public int getStatus() {
+        return status;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setStatus(int status) {
+        this.status = status;
     }
     
-    
+    public Object[] toArray() {
+        Object[] array = {this.id,this.name,this.lastname1,this.lastname2,this.homePhone,this.personalPhone,this.address,this.email,this.curp,this.schoolLevel,this.provenence,this.startDate,this.endDate,this.status};
+        return array;
+    }
 }

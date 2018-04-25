@@ -41,6 +41,12 @@ public class DatabaseUtil {
         if(dao instanceof LevelDao) {
             return fillDao(result,(LevelDao)dao);
         }
+        if(dao instanceof TeacherDao) {
+            return fillDao(result,(TeacherDao)dao);
+        }
+        if(dao instanceof StudentDao) {
+            return fillDao(result,(StudentDao)dao);
+        }
         return null;
     }
     
@@ -92,6 +98,9 @@ public class DatabaseUtil {
     
     private static StudentDao fillDao (ResultSet element, StudentDao dao) throws SQLException{
         StudentDao object = new StudentDao();
+        object.setId(element.getInt(1));
+        object.setName(element.getString(2));
+        object.setLastname1(element.getString(3));
         return object;
     }  
 }

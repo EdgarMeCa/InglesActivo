@@ -19,6 +19,10 @@ public class StudentSearchCriteria {
     private Date endDate;
     private String schoolLevel;
 
+    public StudentSearchCriteria() {
+        
+    }
+    
     public StudentSearchCriteria(String name, String lastname1, String lastname2, Date initialDate, Date endDate, String schoolLevel) {
         this.name = name;
         this.lastname1 = lastname1;

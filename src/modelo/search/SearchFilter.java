@@ -19,9 +19,36 @@ import java.util.Date;
  */
 public class SearchFilter {
     
+    /**
+     *
+     * @param criteria
+     * @return
+     */
     public List<StudentDao> filter4Student(StudentSearchCriteria criteria) {
         List<StudentDao> allRecords = new StudentDaoImpl().select();
-        
+        List<StudentDao> remove = new ArrayList<>();
+        if(criteria.getName() != null || !criteria.getName().isEmpty()) {
+            for(StudentDao dao : allRecords) {
+                if(filter4String(dao.getName(),criteria.getName())) {
+                    remove.add(dao);
+                }
+            }
+        }
+        if(criteria.getLastname1() != null || !criteria.getLastname1().isEmpty()) {
+            for(StudentDao dao : allRecords) {
+                if(filter4String(dao.getLastname1(),criteria.getLastname1())) {
+                    remove.add(dao);
+                }
+            }
+        }
+        if(criteria.getLastname2() != null || !criteria.getLastname2().isEmpty()) {
+            for(StudentDao dao : allRecords) {
+                if(filter4String(dao.getLastname2(),criteria.getLastname2())) {
+                    remove.add(dao);
+                }
+            }
+        }
+        allRecords.removeAll(remove);
         return allRecords;
     }
     
@@ -54,6 +81,7 @@ public class SearchFilter {
                 }
             }
         }
+        allRecords.removeAll(remove);
         return allRecords;
     }
     

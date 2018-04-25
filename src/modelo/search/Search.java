@@ -34,8 +34,12 @@ public class Search {
         return filter.filter4Teacher(criteria);
     }
     
+    /**
+     *
+     * @param criteria
+     * @return
+     */
     public List<StudentDao> search4Student(StudentSearchCriteria criteria) {
-        return null;
-    }
-    
+        return filter.filter4Student(criteria);
+    }   
 }

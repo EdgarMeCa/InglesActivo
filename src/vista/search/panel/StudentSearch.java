@@ -5,12 +5,18 @@
  */
 package vista.search.panel;
 
+import com.toedter.calendar.JDateChooser;
+import controlador.search.StudentSearchControlador;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author emedina
  */
 public class StudentSearch extends javax.swing.JPanel {
-
+    StudentSearchControlador controller = new StudentSearchControlador(this); 
     /**
      * Creates new form StudentSearch
      */
@@ -48,6 +54,11 @@ public class StudentSearch extends javax.swing.JPanel {
         jTableResults = new javax.swing.JTable();
 
         jButtonSearch.setText("Buscar");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchActionPerformed(evt);
+            }
+        });
 
         jButtonClear.setText("Limpiar");
 
@@ -190,6 +201,10 @@ public class StudentSearch extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNameActionPerformed
 
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+        controller.search();
+    }//GEN-LAST:event_jButtonSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClear;
@@ -212,4 +227,60 @@ public class StudentSearch extends javax.swing.JPanel {
     private javax.swing.JTextField jTextLastname2;
     private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox getjComboSchoolLevel() {
+        return jComboSchoolLevel;
+    }
+
+    public void setjComboSchoolLevel(JComboBox jComboSchoolLevel) {
+        this.jComboSchoolLevel = jComboSchoolLevel;
+    }
+
+    public JDateChooser getjDateEndDate() {
+        return jDateEndDate;
+    }
+
+    public void setjDateEndDate(JDateChooser jDateEndDate) {
+        this.jDateEndDate = jDateEndDate;
+    }
+
+    public JDateChooser getjDateInitialDate() {
+        return jDateInitialDate;
+    }
+
+    public void setjDateInitialDate(JDateChooser jDateInitialDate) {
+        this.jDateInitialDate = jDateInitialDate;
+    }
+
+    public JTable getjTableResults() {
+        return jTableResults;
+    }
+
+    public void setjTableResults(JTable jTableResults) {
+        this.jTableResults = jTableResults;
+    }
+
+    public JTextField getjTextLastname1() {
+        return jTextLastname1;
+    }
+
+    public void setjTextLastname1(JTextField jTextLastname1) {
+        this.jTextLastname1 = jTextLastname1;
+    }
+
+    public JTextField getjTextLastname2() {
+        return jTextLastname2;
+    }
+
+    public void setjTextLastname2(JTextField jTextLastname2) {
+        this.jTextLastname2 = jTextLastname2;
+    }
+
+    public JTextField getjTextName() {
+        return jTextName;
+    }
+
+    public void setjTextName(JTextField jTextName) {
+        this.jTextName = jTextName;
+    }
 }
