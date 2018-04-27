@@ -58,5 +58,8 @@ public class ModuloDao {
         this.status = status;
     }
     
-    
+    public Object[] toArray() {
+        Object[] array = {this.id,this.code,this.description,this.status};
+        return array;
+    }
 }

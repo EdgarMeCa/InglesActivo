@@ -5,8 +5,8 @@
  */
 package controlador;
 
-import enums.helper.ActionMenu;
-import enums.helper.SearchMode;
+import enums.actions.ActionMenu;
+import enums.actions.SearchMode;
 import java.util.Date;
 import vista.PrincipalUI;
 import java.util.List;

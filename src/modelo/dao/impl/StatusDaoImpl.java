@@ -5,9 +5,6 @@
  */
 package modelo.dao.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import modelo.dao.StatusDao;
 import modelo.generic.dao.Crud;
@@ -43,7 +40,7 @@ public class StatusDaoImpl implements Crud {
     }
 
     @Override
-    public List select() {
+    public List<StatusDao> select() {
         String query = createQuerySelect();
         List<StatusDao> result =  (List<StatusDao>)(Object)CrudOperation.select(query,new StatusDao());
         return result;

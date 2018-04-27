@@ -5,7 +5,7 @@
  */
 package vista;
 
-import enums.helper.ActionMenu;
+import enums.actions.ActionMenu;
 import controlador.PrincipalControlador;
 import javax.swing.JTable;
 

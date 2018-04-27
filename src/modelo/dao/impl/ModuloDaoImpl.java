@@ -5,27 +5,15 @@
  */
 package modelo.dao.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import modelo.dao.GroupDao;
+import modelo.dao.ModuloDao;
 import modelo.generic.dao.Crud;
 
 /**
  *
  * @author emedina
  */
-public class GroupDaoImpl implements Crud{
-    private GroupDao groupDao;
-    
-    public GroupDaoImpl() {
-        
-    }
-
-    public GroupDaoImpl(GroupDao groupDao) {
-        this.groupDao = groupDao;
-    }
+public class ModuloDaoImpl implements Crud{
 
     @Override
     public boolean insert() {
@@ -43,30 +31,18 @@ public class GroupDaoImpl implements Crud{
     }
 
     @Override
-    public List<GroupDao> select() {
+    public List<ModuloDao> select() {
         String query = createQuerySelect();
-        List<GroupDao> result = (List<GroupDao>)(Object)CrudOperation.select(query,new GroupDao());
+        List<ModuloDao> result =  (List<ModuloDao>)(Object)CrudOperation.select(query,new ModuloDao());
         return result;
     }
     
-    private String createQuerySelect() {
+     private String createQuerySelect() {
         String query = "";
-        query += "SELECT"   + " ";
-        query += "*"        + " ";
-        query += "FROM"     + " ";
-        query += "groupset" + " ";
-        return query;
-    }
-    
-    private String createQueryDelete() {
-        String query = "";
-        query += "DELETE"     + " ";
-        query += "FROM"       + " ";
-        query += "groupset"   + " ";
-        query += "WHERE"      + " ";
-        query += "idGroupset" + " ";
-        query += "="          + " ";
-        query += groupDao.getId();
+        query += "SELECT" + " ";
+        query += "*"      + " ";
+        query += "FROM"   + " ";
+        query += "modulo";
         return query;
     }
 }

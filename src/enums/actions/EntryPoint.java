@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enums.helper;
+package enums.actions;
 
 /**
  *
- * @author EMEDINA
+ * @author emedina
  */
-public enum SearchMode {
-    TEACHER,STUDENT,MODULO,STATUS,PAYMENT,GROUP;
+public enum EntryPoint {
+    NEW,SEARCH;
 }

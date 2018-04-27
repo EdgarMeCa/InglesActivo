@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enums.helper;
+package controlador.search;
 
 /**
  *
  * @author emedina
  */
-public enum EntryPoint {
-    NEW,SEARCH;
+public class StatusSearchController {
+    
 }

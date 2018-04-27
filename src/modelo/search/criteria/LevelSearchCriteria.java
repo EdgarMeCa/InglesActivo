@@ -9,18 +9,21 @@ package modelo.search.criteria;
  *
  * @author emedina
  */
-public class ModuloSearchCriteria {
-    private String name;
+public class LevelSearchCriteria {
 
-    public ModuloSearchCriteria(String name) {
-        this.name = name;
+    /**
+     *
+     */
+    public LevelSearchCriteria() {
+        
     }
-
-    public String getName() {
-        return name;
+    
+    /**
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return true;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    
 }

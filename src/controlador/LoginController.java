@@ -15,10 +15,10 @@ import vista.PrincipalUI;
  *
  * @author emedina
  */
-public class LoginControlador  {
+public class LoginController  {
     private LoginUI loginUI;
 
-    public LoginControlador(LoginUI loginUI) {
+    public LoginController(LoginUI loginUI) {
         this.loginUI = loginUI;
     }
 

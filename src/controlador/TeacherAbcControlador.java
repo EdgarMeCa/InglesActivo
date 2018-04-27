@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import modelo.dao.TeacherDao;
 import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
-import enums.helper.EntryPoint;
+import enums.actions.EntryPoint;
 import ia.rules.preupdate.BeforeCommit;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;

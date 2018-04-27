@@ -42,4 +42,22 @@ public class Search {
     public List<StudentDao> search4Student(StudentSearchCriteria criteria) {
         return filter.filter4Student(criteria);
     }   
+    
+    /**
+     *
+     * @param criteria
+     * @return
+     */
+    public List<StatusDao> search4Status(StatusSearchCriteria criteria) {
+        return filter.filter4Status(criteria);
+    }
+    
+    /**
+     *
+     * @param criteria
+     * @return
+     */
+    public List<ModuloDao> search4Modulo(ModuloSearchCriteria criteria) {
+        return filter.filter4Modulo(criteria);
+    }
 }

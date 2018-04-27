@@ -5,9 +5,6 @@
  */
 package modelo.dao.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import modelo.dao.LevelDao;
 import modelo.generic.dao.Crud;
@@ -34,32 +31,12 @@ public class LevelDaoImpl implements Crud{
     }
 
     @Override
-    public List select() {
+    public List<LevelDao> select() {
         String query = createQuerySelect();
         List<LevelDao> result = (List<LevelDao>)(Object)CrudOperation.select(query,new LevelDao());
         return result;
     }
     
-     private List<LevelDao> resultSetToList(ResultSet result) {
-        List<LevelDao> list = new ArrayList<>();
-        try {
-            while(result.next()) {
-                list.add(fillDao(result));
-            }
-        }
-        catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return list;
-    }
-    
-    private LevelDao fillDao(ResultSet element) throws SQLException {
-        LevelDao object = new LevelDao();
-        object.setId(element.getInt(null));
-        object.setCode(element.getString(null));
-        object.setDescription(element.getString(null));
-        return object;
-    }
      private String createQuerySelect() {
         String query = "";
         query += "SELECT" + " ";

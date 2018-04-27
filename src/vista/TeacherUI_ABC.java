@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import controlador.TeacherAbcControlador;
-import enums.helper.EntryPoint;
+import enums.actions.EntryPoint;
 import ia.util.UI_Helper;
 import java.util.List;
 import javax.swing.JButton;

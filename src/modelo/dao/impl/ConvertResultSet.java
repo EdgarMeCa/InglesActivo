@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ia.util;
+package modelo.dao.impl;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ import modelo.dao.*;
  *
  * @author ASUS
  */
-public class DatabaseUtil {
+public class ConvertResultSet {
     
     public static List<Object> resultSetToList(ResultSet result, Object daoType){
         List<Object> list = new ArrayList<>();
@@ -62,6 +63,24 @@ public class DatabaseUtil {
     
     private static TeacherDao fillDao (ResultSet element, TeacherDao dao) throws SQLException{
         TeacherDao object = new TeacherDao();
+        object.setId(element.getInt(null));
+        object.setName(element.getString(null));
+        object.setFirstLastName(element.getString(null));
+        object.setSecondLastName(element.getString(null));
+        object.setAddress(element.getString(null));
+        object.setCedula(element.getString(null));
+        object.setCurp(element.getString(null));
+        object.setEndDate(element.getDate(null));
+        object.setExperience(element.getString(null));
+        object.setHomePhone(element.getString(null));
+        object.setLevel(element.getInt(null));
+        object.setPassword(element.getString(null));
+        object.setPersonalEmail(element.getString(null));
+        object.setPersonalPhone(element.getString(null));
+        object.setPicture(element.getString(null));
+        object.setStartDate(element.getDate(null));
+        object.setStatus(element.getInt(null));
+        object.setWorkEmail(element.getString(null));
         return object;
     }
     

@@ -24,6 +24,53 @@ public class SearchFilter {
      * @param criteria
      * @return
      */
+    public List<LevelDao> filter4Level(LevelSearchCriteria criteria) {
+        List<LevelDao> allRecords = new LevelDaoImpl().select();
+        return allRecords;
+    }
+    
+    /**
+     *
+     * @param criteria
+     * @return
+     */
+    public List<ModuloDao> filter4Modulo(ModuloSearchCriteria criteria) {
+        List<ModuloDao> allRecords = new ModuloDaoImpl().select();
+        List<ModuloDao> remove = new ArrayList<>();
+        if(criteria.getName() != null || !criteria.getName().isEmpty()){
+            for(ModuloDao dao : allRecords) {
+                if(filter4String(dao.getCode(),criteria.getName())) {
+                    remove.add(dao);
+                }
+            }
+        }
+        allRecords.removeAll(remove);
+        return allRecords;
+    }
+    /**
+     *
+     * @param criteria
+     * @return
+     */
+    public List<StatusDao> filter4Status(StatusSearchCriteria criteria) {
+        List<StatusDao> allRecords = new StatusDaoImpl().select();
+        List<StatusDao> remove = new ArrayList<>();
+        if(criteria.getName() != null || !criteria.getName().isEmpty()){
+            for(StatusDao dao : allRecords) {
+                if(filter4String(dao.getCode(),criteria.getName())) {
+                    remove.add(dao);
+                }
+            }
+        }
+        allRecords.removeAll(remove);
+        return allRecords;
+    }
+    
+    /**
+     *
+     * @param criteria
+     * @return
+     */
     public List<StudentDao> filter4Student(StudentSearchCriteria criteria) {
         List<StudentDao> allRecords = new StudentDaoImpl().select();
         List<StudentDao> remove = new ArrayList<>();

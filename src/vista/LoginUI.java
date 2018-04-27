@@ -7,7 +7,7 @@ package vista;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import controlador.LoginControlador;
+import controlador.LoginController;
 
 /**
  *
@@ -111,7 +111,7 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextUsernameActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-       LoginControlador lc = new LoginControlador(this);
+       LoginController lc = new LoginController(this);
        lc.doLogin();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 

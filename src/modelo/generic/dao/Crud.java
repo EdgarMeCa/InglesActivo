@@ -7,6 +7,11 @@ package modelo.generic.dao;
 
 import java.util.List;
 
+/**
+ *
+ * @author emedina
+ * @param <T>
+ */
 public interface Crud<T> {
     
     /**

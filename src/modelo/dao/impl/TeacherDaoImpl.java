@@ -6,9 +6,6 @@
 package modelo.dao.impl;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import modelo.generic.dao.Crud;
 import modelo.dao.TeacherDao;
 
@@ -51,50 +48,12 @@ public class TeacherDaoImpl implements Crud {
     @Override
     public List<TeacherDao> select() {
         String query = createQuerySelect();
-        //ResultSet result = CrudOperation.select(query);
-        //List<TeacherDao> list = resultSetToList(result);
-        return null;
-    }
-    
-    private List<TeacherDao> resultSetToList(ResultSet result) {
-        List<TeacherDao> list = new ArrayList<>();
-        try {
-            while(result.next()) {
-                list.add(fillDao(result));
-            }
-        }
-        catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        List<TeacherDao> list = (List<TeacherDao>)(Object)CrudOperation.select(query,new TeacherDao());
         return list;
-    }
-    
-    private TeacherDao fillDao(ResultSet element) throws SQLException {
-        TeacherDao object = new TeacherDao();
-        object.setId(element.getInt(null));
-        object.setName(element.getString(null));
-        object.setFirstLastName(element.getString(null));
-        object.setSecondLastName(element.getString(null));
-        object.setAddress(element.getString(null));
-        object.setCedula(element.getString(null));
-        object.setCurp(element.getString(null));
-        object.setEndDate(element.getDate(null));
-        object.setExperience(element.getString(null));
-        object.setHomePhone(element.getString(null));
-        object.setLevel(element.getInt(null));
-        object.setPassword(element.getString(null));
-        object.setPersonalEmail(element.getString(null));
-        object.setPersonalPhone(element.getString(null));
-        object.setPicture(element.getString(null));
-        object.setStartDate(element.getDate(null));
-        object.setStatus(element.getInt(null));
-        object.setWorkEmail(element.getString(null));
-        return object;
     }
     
      private String createQueryInsert() {
         String query = "";
-        
         query += "INSERT INTO" + " ";
         query += "teacher"     + " ";
         query += "VALUES"      + " ";
@@ -130,7 +89,6 @@ public class TeacherDaoImpl implements Crud {
      
     private String createQueryUpdate() {
         String query = "";
-        
         query += "UPDATE"  + " ";
         query += "teacher" + " ";
         query += "SET"     + " ";

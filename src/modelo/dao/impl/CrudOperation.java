@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
 import database.DBConnection;
-import ia.util.DatabaseUtil;
 import java.util.List;
 
 /**
@@ -117,7 +116,7 @@ public class CrudOperation {
             connection = DBConnection.getInstance().openConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            queryResult = DatabaseUtil.resultSetToList(resultSet,daoType);
+            queryResult = ConvertResultSet.resultSetToList(resultSet,daoType);
         }
         catch (SQLException ex)
         {

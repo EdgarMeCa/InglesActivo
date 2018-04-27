@@ -77,4 +77,13 @@ public class StatusDao {
     public String toString() {
         return code;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public Object[] toArray() {
+        Object[] array = {this.id,this.code,this.description};
+        return array;
+    }
 }
