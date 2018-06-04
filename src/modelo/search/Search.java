@@ -14,7 +14,11 @@ import modelo.dao.*;
  * @author EMEDINA
  */
 public class Search {
-    private SearchFilter filter = new SearchFilter();
+    private SearchFilter filter;
+    
+    public Search() {
+        filter = new SearchFilter();
+    }
     
     /**
      *
