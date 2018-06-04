@@ -10,7 +10,13 @@ import java.sql.*;
  *
  * @author ASUS
  */
-public class DBConnection implements DatabaseCredential {
+public class DBConnection {
+    
+    private final String HOST = "jdbc:mysql://localhost/";
+    private final String DBNAME = "inglesactivo";
+    private final String USERNAME = "root";
+    private final String PASSWORD = "";
+    private final String DRIVER = "com.mysql.jdbc.Driver";
     
     private static  DBConnection DBCONNECTION = null;
     private Connection conn = null;
