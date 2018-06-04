@@ -5,43 +5,53 @@
  */
 package controlador;
 
+import controlador.data.handling.ComboBoxHelper;
 import ia.util.ConvertDate;
 import ia.util.FileChooser;
 import ia.util.Picture;
-import ia.util.ResultMessage;
+import ia.util.MessageUtil;
 import javax.swing.JPanel;
 import modelo.dao.TeacherDao;
 import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
-import enums.actions.EntryPoint;
-import ia.rules.preupdate.BeforeCommit;
+import enums.actions.ViewMode;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import modelo.dao.LevelDao;
 import modelo.dao.StatusDao;
 import modelo.dao.impl.LevelDaoImpl;
 import modelo.dao.impl.StatusDaoImpl;
-import vista.PrincipalUI;
-import javax.swing.JOptionPane;
+import vista.PrincipalUI;                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
 /**
  *
  * @author emedina
  */
-public class TeacherAbcControlador implements BeforeCommit{
+public class TeacherAbcControlador {
     private TeacherUI_ABC teacherUI;
+    private TeacherDao dao;
     private ViewValidate viewValidate;
     
     /**
      *
      * @param teacherUI
-     * @param entry
+     * @param dao
+     * @param mode
      */
-    public TeacherAbcControlador(TeacherUI_ABC teacherUI, EntryPoint entry) {
+    public TeacherAbcControlador(TeacherUI_ABC teacherUI,TeacherDao dao ,ViewMode mode) {
         this.teacherUI = teacherUI;
-        this.fillLevelCombo();
-        this.fillStatusCombo();
-        this.viewValidate = new ViewValidate(teacherUI,entry);
+        this.dao = dao;
+        this.viewValidate = new ViewValidate(mode);
+    }
+    
+    /**
+     *
+     */
+    public void initValuesFromSearch() {
+        this.teacherUI.getjTextName().setText(dao.getName());
+        this.teacherUI.getjTextLastName1().setText(dao.getFirstLastName());
+        this.teacherUI.getjTextLastName2().setText(dao.getSecondLastName());
+        this.teacherUI.getjTextAddress().setText(dao.getAddress());
     }
     
     /**
@@ -53,7 +63,7 @@ public class TeacherAbcControlador implements BeforeCommit{
         {
         JPanel panelPicture = teacherUI.getjPanelPicture();
         Picture picture = new Picture(panelPicture.getWidth(),panelPicture.getHeight(),chooser.getPath());
-        teacherUI.setPath(chooser.getPath());
+        dao.setPicture(chooser.getPath());
         panelPicture.removeAll();
         panelPicture.add(picture);
         panelPicture.repaint();
@@ -97,106 +107,80 @@ public class TeacherAbcControlador implements BeforeCommit{
      */
     public void insertData() {
         boolean isDataUpdate;
-        TeacherDao teacherDao = loadTeacherDao();
-        TeacherDaoImpl impl = new TeacherDaoImpl(teacherDao);
+        this.loadTeacherDao();
+        TeacherDaoImpl impl = new TeacherDaoImpl(dao);
         isDataUpdate = impl.insert();
         if(isDataUpdate)
         {
             this.clear();
-            ResultMessage.databaseInsertSuccessMessage();
+            MessageUtil.databaseInsertSuccessMessage();
         }
         else 
         {
-            ResultMessage.databaseInsertFailMessage();
+            MessageUtil.databaseInsertErrorMessage();
         }
     }
     
     /**
      * Return to the principal screen 
      */
-    public void returnToPrincpal() {
+    public void returnPrincpal() {
         PrincipalUI principal = new PrincipalUI();
         principal.setVisible(true);
         this.teacherUI.setVisible(false);
     }
     
-     /**
-     *
-     * @return boolean
-     */
-    @Override
-    public boolean beforeCommitData() {
-        boolean commit = true;
-        if(!viewValidate.validateRequiredFiels()) {
-            commit = false;
-        }
-        return commit;
-    }
-    
-    private TeacherDao loadTeacherDao(){
-        TeacherDao teacherDao = new TeacherDao();
-        teacherDao.setAddress(teacherUI.getjTextAddress().getText());
-        teacherDao.setCedula(teacherUI.getjTextCedula().getText());
-        teacherDao.setCurp(teacherUI.getjTextCurp().getText());
-        teacherDao.setEndDate(ConvertDate.toSqlDate(teacherUI.getjDateEnd().getDate()));
-        teacherDao.setExperience(teacherUI.getjTextAreaExperience().getText());
-        teacherDao.setFirstLastName(teacherUI.getjTextLastName1().getText());
-        teacherDao.setHomePhone(teacherUI.getjTextPhoneHome().getText());
-        teacherDao.setLevel(teacherUI.getjComboBoxLevel().getSelectedIndex());
-        teacherDao.setName(teacherUI.getjTextName().getText());
-        teacherDao.setPassword(teacherUI.getjTextPassword().getText());
-        teacherDao.setPersonalEmail(teacherUI.getjTextEmailPersonal().getText());
-        teacherDao.setPersonalPhone(teacherUI.getjTextPhonePersonal().getText());
-        teacherDao.setPicture(teacherUI.getPath());
-        teacherDao.setSecondLastName(teacherUI.getjTextLastName2().getText());
-        teacherDao.setStartDate(ConvertDate.toSqlDate(teacherUI.getjDateStart().getDate()));
-        teacherDao.setStatus(teacherUI.getjComboBoxStatus().getSelectedIndex());
-        teacherDao.setWorkEmail(teacherUI.getjTextEmailWork().getText());
-        return teacherDao;
+    private void loadTeacherDao(){
+        dao.setAddress(teacherUI.getjTextAddress().getText());
+        dao.setCedula(teacherUI.getjTextCedula().getText());
+        dao.setCurp(teacherUI.getjTextCurp().getText());
+        dao.setEndDate(ConvertDate.toSqlDate(teacherUI.getjDateEnd().getDate()));
+        dao.setExperience(teacherUI.getjTextAreaExperience().getText());
+        dao.setFirstLastName(teacherUI.getjTextLastName1().getText());
+        dao.setHomePhone(teacherUI.getjTextPhoneHome().getText());
+        dao.setLevel(teacherUI.getjComboBoxLevel().getSelectedIndex());
+        dao.setName(teacherUI.getjTextName().getText());
+        dao.setPassword(teacherUI.getjTextPassword().getText());
+        dao.setPersonalEmail(teacherUI.getjTextEmailPersonal().getText());
+        dao.setPersonalPhone(teacherUI.getjTextPhonePersonal().getText());
+        //
+        dao.setSecondLastName(teacherUI.getjTextLastName2().getText());
+        dao.setStartDate(ConvertDate.toSqlDate(teacherUI.getjDateStart().getDate()));
+        dao.setStatus(teacherUI.getjComboBoxStatus().getSelectedIndex());
+        dao.setWorkEmail(teacherUI.getjTextEmailWork().getText());
     }
     
     private void fillStatusCombo() {
         List<StatusDao> resultList = new StatusDaoImpl().select();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        for (StatusDao dao : resultList) {
-            model.addElement(dao);
-        }
+        DefaultComboBoxModel model = new ComboBoxHelper().fillComboBox(resultList);
         teacherUI.getjComboBoxStatus().setModel(model);
     }
     
     private void fillLevelCombo() {
         List<LevelDao> resultList = new LevelDaoImpl().select();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        for (LevelDao dao : resultList) {
-            model.addElement(dao);
-        }
+        DefaultComboBoxModel model = new ComboBoxHelper().fillComboBox(resultList);
         teacherUI.getjComboBoxLevel().setModel(model);
     }
 
     
     private class ViewValidate {
-        private TeacherUI_ABC teacherUI;
-        private EntryPoint entryPoint;
+       ViewMode mode;
         
-        public ViewValidate(TeacherUI_ABC teacherUI,EntryPoint entry) {
-            this.teacherUI = teacherUI;
-            this.entryPoint = entry;
+        public ViewValidate(ViewMode mode) {
+            this.mode = mode;
             disbleActionButton();
         }
         
         private void disbleActionButton() {
-            if(entryPoint == EntryPoint.NEW) {
-                this.teacherUI.getjButtonDelete().setEnabled(false);
-                this.teacherUI.getjButtonUpdate().setEnabled(false);
+            if(mode == ViewMode.NEW) {
+                teacherUI.getjButtonDelete().setEnabled(false);
+                teacherUI.getjButtonUpdate().setEnabled(false);
             }
-            if(entryPoint == EntryPoint.SEARCH) {
-                this.teacherUI.getjButtonAdd().setEnabled(false);
+            if(mode == ViewMode.SEARCH) {
+                teacherUI.getjButtonAdd().setEnabled(false);
             }
         }
         
-        /**
-        *
-        */
         public boolean validateRequiredFiels() {
             String message = "";
             boolean isValid = true;
@@ -226,7 +210,7 @@ public class TeacherAbcControlador implements BeforeCommit{
             }
             if(!message.equals("")) {
                 isValid = false;
-                JOptionPane.showMessageDialog(null, message,"Campos faltantes", JOptionPane.ERROR_MESSAGE);
+                MessageUtil.customErrorMessage(message);
             }
             return isValid;
         }

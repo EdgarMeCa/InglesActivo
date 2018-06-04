@@ -9,6 +9,6 @@ package enums.actions;
  *
  * @author emedina
  */
-public enum EntryPoint {
+public enum ViewMode {
     NEW,SEARCH;
 }

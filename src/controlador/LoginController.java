@@ -5,7 +5,7 @@
  */
 package controlador;
 
-import ia.util.ResultMessage;
+import ia.util.MessageUtil;
 import javax.swing.JOptionPane;
 import vista.LoginUI;
 import modelo.dao.LoginDao;
@@ -41,7 +41,7 @@ public class LoginController  {
             }
             else
             {
-                ResultMessage.logingFail();
+                MessageUtil.logingError();
             }
         }
         else 

@@ -16,10 +16,17 @@ import modelo.dao.TeacherDao;
 public class TeacherDaoImpl implements Crud {
     private TeacherDao teacherDao;
 
+    /**
+     *
+     */
     public TeacherDaoImpl() {
         
     }
 
+    /**
+     *
+     * @param teacherDao
+     */
     public TeacherDaoImpl(TeacherDao teacherDao) {
         this.teacherDao = teacherDao;
     }

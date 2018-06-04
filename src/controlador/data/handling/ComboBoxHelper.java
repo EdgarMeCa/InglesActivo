@@ -3,17 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ia.util;
-
+package controlador.data.handling;
+ 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel; 
 import javax.swing.JComboBox;
 
 /**
  *
- * @author emedina
+ * @author EMEDINA
+ * @param <T>
  */
-public class UI_Helper {
+public class ComboBoxHelper<T> {
+    
+    /**
+     *
+     * @param list
+     * @return
+     */
+    public DefaultComboBoxModel fillComboBox(List<T> list) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        for(T object : list){
+            model.addElement(object);
+        }
+        return model;
+    }   
     
     /**
      *
