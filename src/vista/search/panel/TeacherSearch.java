@@ -5,7 +5,7 @@
  */
 package vista.search.panel;
 
-import controlador.search.TeacherSearchControlador;
+import controller.search.TeacherSearchController;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  * @author emedina
  */
 public class TeacherSearch extends javax.swing.JPanel {
-    private TeacherSearchControlador controlador = new TeacherSearchControlador(this);
+    private TeacherSearchController controlador = new TeacherSearchController(this);
     /**
      * Creates new form TeacherSearch
      */

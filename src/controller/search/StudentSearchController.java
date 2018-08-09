@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.search;
+package controller.search;
 
 import java.util.Date;
 import java.util.List;
@@ -17,10 +17,10 @@ import vista.search.panel.StudentSearch;
  *
  * @author emedina
  */
-public class StudentSearchControlador {
+public class StudentSearchController {
     private StudentSearch studentSearch;
 
-    public StudentSearchControlador(StudentSearch studentSearch) {
+    public StudentSearchController(StudentSearch studentSearch) {
         this.studentSearch = studentSearch;
     }
     

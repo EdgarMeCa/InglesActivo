@@ -6,7 +6,7 @@
 package vista;
 
 import enums.actions.ActionMenu;
-import controlador.PrincipalControlador;
+import controller.PrincipalControlador;
 import javax.swing.JTable;
 
 /**

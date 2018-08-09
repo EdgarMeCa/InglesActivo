@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package controller;
 
 import enums.actions.ActionMenu;
 import enums.actions.SearchMode;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.data.handling;
+package ia.screen.components.util;
  
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import javax.swing.JComboBox;
  * @author EMEDINA
  * @param <T>
  */
-public class ComboBoxHelper<T> {
+public class ComboBoxEnhacement<T> {
     
     /**
      *
@@ -35,11 +35,11 @@ public class ComboBoxHelper<T> {
      * @param combo
      * @return
      */
-    public static Object comboBoxToList(JComboBox combo) {
-        List<Object> list = new ArrayList<>();
+    public List<T> comboBoxToList(JComboBox combo) {
+        List<T> list = new ArrayList<>();
         int size = combo.getItemCount();
         for (int i = 0; i < size; i++) {
-            list.add(combo.getItemAt(i));
+            list.add((T)combo.getItemAt(i));
         }
     return list;   
     }   

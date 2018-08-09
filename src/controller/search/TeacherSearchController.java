@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.search;
+package controller.search;
 
 import java.util.List;
 import modelo.dao.TeacherDao;
@@ -15,10 +15,10 @@ import vista.search.panel.TeacherSearch;
  *
  * @author EMEDINA
  */
-public class TeacherSearchControlador {
+public class TeacherSearchController {
     private TeacherSearch teacherSearh;
 
-    public TeacherSearchControlador(TeacherSearch teacherSearh) {
+    public TeacherSearchController(TeacherSearch teacherSearh) {
         this.teacherSearh = teacherSearh;
     }
     
@@ -34,8 +34,8 @@ public class TeacherSearchControlador {
     public void search() {
         Search search = new Search();
         TeacherSearchCriteria criteria = createCriteria();
-        List<TeacherDao> list = search.search4Teacher(criteria);
-        fillTable(list);
+        List<TeacherDao> resultList = search.search4Teacher(criteria);
+        fillTable(resultList);
     }
     
     private TeacherSearchCriteria createCriteria() {

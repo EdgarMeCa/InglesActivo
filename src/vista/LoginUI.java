@@ -7,7 +7,7 @@ package vista;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import controlador.LoginController;
+import controller.LoginController;
 
 /**
  *

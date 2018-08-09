@@ -6,7 +6,7 @@
 package vista.search.panel;
 
 import com.toedter.calendar.JDateChooser;
-import controlador.search.StudentSearchControlador;
+import controller.search.StudentSearchController;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  * @author emedina
  */
 public class StudentSearch extends javax.swing.JPanel {
-    StudentSearchControlador controller = new StudentSearchControlador(this); 
+    StudentSearchController controller = new StudentSearchController(this); 
     /**
      * Creates new form StudentSearch
      */

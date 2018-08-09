@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.SearchUIControlador;
+import controller.SearchUIControlador;
 import javax.swing.JPanel;
 import enums.actions.SearchMode;
 

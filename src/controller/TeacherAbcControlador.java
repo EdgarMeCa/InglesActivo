@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package controller;
 
-import controlador.data.handling.ComboBoxHelper;
+import ia.screen.components.util.ComboBoxEnhacement;
 import ia.util.ConvertDate;
 import ia.util.FileChooser;
 import ia.util.Picture;
@@ -152,13 +152,13 @@ public class TeacherAbcControlador {
     
     private void fillStatusCombo() {
         List<StatusDao> resultList = new StatusDaoImpl().select();
-        DefaultComboBoxModel model = new ComboBoxHelper().fillComboBox(resultList);
+        DefaultComboBoxModel model = new ComboBoxEnhacement().fillComboBox(resultList);
         teacherUI.getjComboBoxStatus().setModel(model);
     }
     
     private void fillLevelCombo() {
         List<LevelDao> resultList = new LevelDaoImpl().select();
-        DefaultComboBoxModel model = new ComboBoxHelper().fillComboBox(resultList);
+        DefaultComboBoxModel model = new ComboBoxEnhacement().fillComboBox(resultList);
         teacherUI.getjComboBoxLevel().setModel(model);
     }
 
