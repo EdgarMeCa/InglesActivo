@@ -27,7 +27,7 @@ public class TeacherUI_ABC extends javax.swing.JFrame {
     public TeacherUI_ABC() {
         initComponents();
         setLocationRelativeTo(null);
-        controlador = new TeacherAbcControlador(this,new TeacherDao(),ViewMode.NEW);
+        controlador = new TeacherAbcControlador(this,ViewMode.NEW);
     }
     
     /**

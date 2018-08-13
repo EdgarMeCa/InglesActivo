@@ -25,6 +25,11 @@ public class CrudOperation {
         
     }
     
+    /**
+     *
+     * @param query
+     * @return
+     */
     public static boolean insert(String query) {
         boolean result = false;
         try
@@ -53,7 +58,12 @@ public class CrudOperation {
         return result;
     }
     
-     public static boolean update(String query) {
+    /**
+     *
+     * @param query
+     * @return
+     */
+    public static boolean update(String query) {
         boolean result = false;
         try
         {
@@ -81,6 +91,11 @@ public class CrudOperation {
         return result;
     }
      
+    /**
+     *
+     * @param query
+     * @return
+     */
     public static boolean delete(String query) {
         boolean result = false;
         try
@@ -109,6 +124,12 @@ public class CrudOperation {
         return result;
     }
     
+    /**
+     *
+     * @param query
+     * @param daoType
+     * @return
+     */
     public static List<Object> select(String query,Object daoType) {
         List<Object> queryResult = null;
         try

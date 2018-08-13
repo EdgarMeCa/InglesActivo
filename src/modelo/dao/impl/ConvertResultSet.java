@@ -19,6 +19,12 @@ import modelo.dao.*;
  */
 public class ConvertResultSet {
     
+    /**
+     *
+     * @param result
+     * @param daoType
+     * @return
+     */
     public static List<Object> resultSetToList(ResultSet result, Object daoType){
         List<Object> list = new ArrayList<>();
         try {

@@ -10,8 +10,7 @@ import ia.util.ConvertDate;
 import ia.util.FileChooser;
 import ia.util.Picture;
 import ia.util.MessageUtil;
-import javax.swing.JPanel;
-import modelo.dao.TeacherDao;
+import javax.swing.JPanel;;
 import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
 import enums.actions.ViewMode;
@@ -19,6 +18,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import modelo.dao.LevelDao;
 import modelo.dao.StatusDao;
+import modelo.dao.TeacherDao;
 import modelo.dao.impl.LevelDaoImpl;
 import modelo.dao.impl.StatusDaoImpl;
 import vista.PrincipalUI;                                                                                                                                                                                                                                                                                                                                                                                                                                                       
@@ -33,7 +33,18 @@ public class TeacherAbcControlador {
     private ViewValidate viewValidate;
     
     /**
-     *
+     * This construct it is for create a new Teacher record in the database
+     * @param teacherUI
+     * @param mode
+     */
+    public TeacherAbcControlador(TeacherUI_ABC teacherUI,ViewMode mode) {
+        this.teacherUI = teacherUI;
+        this.dao = new TeacherDao();
+        this.viewValidate = new ViewValidate(mode);
+    }
+    
+    /**
+     * This construct it is for update or delete a Teacher record for the database
      * @param teacherUI
      * @param dao
      * @param mode
