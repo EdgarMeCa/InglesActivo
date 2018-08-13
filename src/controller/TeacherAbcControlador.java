@@ -33,7 +33,7 @@ public class TeacherAbcControlador {
     private ViewValidate viewValidate;
     
     /**
-     * This construct it is for create a new Teacher record in the database
+     * This construct is to create a new Teacher record in the database
      * @param teacherUI
      * @param mode
      */
@@ -44,7 +44,7 @@ public class TeacherAbcControlador {
     }
     
     /**
-     * This construct it is for update or delete a Teacher record for the database
+     * This construct is to update or delete a Teacher record for the database
      * @param teacherUI
      * @param dao
      * @param mode
