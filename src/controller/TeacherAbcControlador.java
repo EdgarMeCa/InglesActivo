@@ -5,7 +5,6 @@
  */
 package controller;
 
-import ia.screen.components.util.ComboBoxEnhacement;
 import ia.util.ConvertDate;
 import ia.util.FileChooser;
 import ia.util.Picture;
@@ -14,23 +13,17 @@ import javax.swing.JPanel;;
 import vista.TeacherUI_ABC;
 import modelo.dao.impl.TeacherDaoImpl;
 import enums.actions.ViewMode;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import modelo.dao.LevelDao;
-import modelo.dao.StatusDao;
 import modelo.dao.TeacherDao;
-import modelo.dao.impl.LevelDaoImpl;
-import modelo.dao.impl.StatusDaoImpl;
-import vista.PrincipalUI;                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+import vista.PrincipalUI;
+import controller.view.TeacherAbcViewController;
 
 /**
  *
  * @author emedina
  */
-public class TeacherAbcControlador {
+public class TeacherAbcControlador extends TeacherAbcViewController {
     private TeacherUI_ABC teacherUI;
     private TeacherDao dao;
-    private ViewValidate viewValidate;
     
     /**
      * This construct is to create a new Teacher record in the database
@@ -38,9 +31,9 @@ public class TeacherAbcControlador {
      * @param mode
      */
     public TeacherAbcControlador(TeacherUI_ABC teacherUI,ViewMode mode) {
+        super(teacherUI,mode);
         this.teacherUI = teacherUI;
         this.dao = new TeacherDao();
-        this.viewValidate = new ViewValidate(mode);
     }
     
     /**
@@ -50,19 +43,9 @@ public class TeacherAbcControlador {
      * @param mode
      */
     public TeacherAbcControlador(TeacherUI_ABC teacherUI,TeacherDao dao ,ViewMode mode) {
+        super(teacherUI,mode,dao);
         this.teacherUI = teacherUI;
         this.dao = dao;
-        this.viewValidate = new ViewValidate(mode);
-    }
-    
-    /**
-     *
-     */
-    public void initValuesFromSearch() {
-        this.teacherUI.getjTextName().setText(dao.getName());
-        this.teacherUI.getjTextLastName1().setText(dao.getFirstLastName());
-        this.teacherUI.getjTextLastName2().setText(dao.getSecondLastName());
-        this.teacherUI.getjTextAddress().setText(dao.getAddress());
     }
     
     /**
@@ -110,18 +93,17 @@ public class TeacherAbcControlador {
         teacherUI.getjDateStart().setDate(null);
         teacherUI.getjDateEnd().setDate(null);
         teacherUI.getjTextPassword().setText(null);
-        erasePicture();
     }
     
     /**
      * Insert the information from the screen into the database
      */
     public void insertData() {
-        boolean isDataUpdate;
+        boolean isUpdate;
         this.loadTeacherDao();
         TeacherDaoImpl impl = new TeacherDaoImpl(dao);
-        isDataUpdate = impl.insert();
-        if(isDataUpdate)
+        isUpdate = impl.insert();
+        if(isUpdate)
         {
             this.clear();
             MessageUtil.databaseInsertSuccessMessage();
@@ -129,6 +111,38 @@ public class TeacherAbcControlador {
         else 
         {
             MessageUtil.databaseInsertErrorMessage();
+        }
+    }
+    
+    public void updateData() {
+        boolean isUpdate;
+        this.loadTeacherDao();
+        TeacherDaoImpl impl = new TeacherDaoImpl(dao);
+        isUpdate = impl.update();
+        if(isUpdate)
+        {
+            this.clear();
+            MessageUtil.databaseUpdateSuccessMessage();
+        }
+        else 
+        {
+            MessageUtil.databaseUpdateErrorMessage();
+        }
+    }
+    
+    public void deleteData() {
+        boolean isUpdate;
+        this.loadTeacherDao();
+        TeacherDaoImpl impl = new TeacherDaoImpl(dao);
+        isUpdate = impl.delete();
+        if(isUpdate)
+        {
+            this.clear();
+            MessageUtil.databaseDeleteSuccessMessage();
+        }
+        else 
+        {
+            MessageUtil.databaseDeleteErrorMessage();
         }
     }
     
@@ -159,71 +173,5 @@ public class TeacherAbcControlador {
         dao.setStartDate(ConvertDate.toSqlDate(teacherUI.getjDateStart().getDate()));
         dao.setStatus(teacherUI.getjComboBoxStatus().getSelectedIndex());
         dao.setWorkEmail(teacherUI.getjTextEmailWork().getText());
-    }
-    
-    private void fillStatusCombo() {
-        List<StatusDao> resultList = new StatusDaoImpl().select();
-        DefaultComboBoxModel model = new ComboBoxEnhacement().fillComboBox(resultList);
-        teacherUI.getjComboBoxStatus().setModel(model);
-    }
-    
-    private void fillLevelCombo() {
-        List<LevelDao> resultList = new LevelDaoImpl().select();
-        DefaultComboBoxModel model = new ComboBoxEnhacement().fillComboBox(resultList);
-        teacherUI.getjComboBoxLevel().setModel(model);
-    }
-
-    
-    private class ViewValidate {
-       ViewMode mode;
-        
-        public ViewValidate(ViewMode mode) {
-            this.mode = mode;
-            disbleActionButton();
-        }
-        
-        private void disbleActionButton() {
-            if(mode == ViewMode.NEW) {
-                teacherUI.getjButtonDelete().setEnabled(false);
-                teacherUI.getjButtonUpdate().setEnabled(false);
-            }
-            if(mode == ViewMode.SEARCH) {
-                teacherUI.getjButtonAdd().setEnabled(false);
-            }
-        }
-        
-        public boolean validateRequiredFiels() {
-            String message = "";
-            boolean isValid = true;
-            if (teacherUI.getjTextName().getText().isEmpty()) {
-                message += "Error: El campo Nombre no puede estar vacio \n";
-            }
-            if (teacherUI.getjTextLastName1().getText().isEmpty()) {
-                message += "Error: El campo Apellido paterno no puede estar vacio \n";
-            }
-            if (teacherUI.getjTextLastName2().getText().isEmpty()) {
-                message += "Error: El campo Apellido materno no puede estar vacio \n";
-            }
-            if (teacherUI.getjTextAddress().getText().isEmpty()) {
-                message += "Error: El campo Direccion no puede estar vacio \n";
-            }
-            if (teacherUI.getjTextPhonePersonal().getText().isEmpty()) {
-                message += "Error: El campo Telefono celular no puede estar vacio \n";
-            }
-            if (teacherUI.getjTextEmailWork().getText().isEmpty()) {
-                message += "Error: El campo Email laboral no puede estar vacio \n";
-            }
-            if (teacherUI.getjTextPassword().getText().isEmpty()) {
-                message += "Error: El campo Contraseña no puede estar vacio \n";
-            }
-            if (teacherUI.getjDateStart().getDate() == null) {
-                message += "Error: El campo Fecha Ingreso no puede estar vacio \n";
-            }
-            if(!message.equals("")) {
-                isValid = false;
-                MessageUtil.customErrorMessage(message);
-            }
-            return isValid;
-        }
     }
 }

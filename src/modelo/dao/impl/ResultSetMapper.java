@@ -17,7 +17,7 @@ import modelo.dao.*;
  *
  * @author ASUS
  */
-public class ConvertResultSet {
+public class ResultSetMapper {
     
     /**
      *

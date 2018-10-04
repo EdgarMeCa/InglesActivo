@@ -137,7 +137,7 @@ public class CrudOperation {
             connection = DBConnection.getInstance().openConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            queryResult = ConvertResultSet.resultSetToList(resultSet,daoType);
+            queryResult = ResultSetMapper.resultSetToList(resultSet,daoType);
         }
         catch (SQLException ex)
         {
